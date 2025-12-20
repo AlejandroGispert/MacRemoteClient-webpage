@@ -1,5 +1,6 @@
 <script>
 	let mobileMenuOpen = $state(false);
+	let dropdownOpen = $state(false);
 	
 	function toggleMobileMenu() {
 		mobileMenuOpen = !mobileMenuOpen;
@@ -8,27 +9,57 @@
 	function closeMobileMenu() {
 		mobileMenuOpen = false;
 	}
+	
+	function handleKeyDown(event) {
+		if (event.key === 'Escape') {
+			if (mobileMenuOpen) {
+				closeMobileMenu();
+			}
+			if (dropdownOpen) {
+				dropdownOpen = false;
+			}
+		}
+	}
+	
+	function toggleDropdown() {
+		dropdownOpen = !dropdownOpen;
+	}
 </script>
 
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="Main navigation">
 	<div class="nav-container">
 		<!-- Logo/Brand -->
-		<a href="/" class="brand">
-			<img src="/ic_launcher_round.png" alt="MacRemoteController" class="logo" />
-			<span class="brand-text">MacRemoteController</span>
+		<a href="/" class="brand" aria-label="Mac Remote Controller - Home">
+			<img src="/ic_launcher_round.png" alt="" class="logo" aria-hidden="true" />
+			<span class="brand-text">Mac Remote Controller</span>
 		</a>
 		
 		<!-- Desktop Navigation -->
-		<ul class="nav-links">
-			<li><a href="/" class="nav-link">Home</a></li>
-			<li><a href="#features" class="nav-link">Features</a></li>
-			<li><a href="#about" class="nav-link">About</a></li>
-			<li><a href="#download" class="nav-link">Download</a></li>
-			<li class="nav-dropdown">
-				<span class="nav-link">Legal</span>
-				<ul class="dropdown-menu">
-					<li><a href="/privacy" class="dropdown-link">Privacy Policy</a></li>
-					<li><a href="/terms" class="dropdown-link">Terms of Service</a></li>
+		<ul class="nav-links" role="menubar">
+			<li role="none"><a href="/" class="nav-link" role="menuitem">Home</a></li>
+			<li role="none"><a href="#features" class="nav-link" role="menuitem">Features</a></li>
+			<li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
+			<li role="none"><a href="#download" class="nav-link" role="menuitem">Download</a></li>
+			<li class="nav-dropdown" role="none">
+				<button 
+					class="nav-link dropdown-trigger"
+					aria-expanded={dropdownOpen}
+					aria-haspopup="true"
+					aria-label="Legal menu"
+					role="menuitem"
+					onclick={toggleDropdown}
+					onkeydown={handleKeyDown}
+				>
+					Legal
+				</button>
+				<ul 
+					class="dropdown-menu {dropdownOpen ? 'open' : ''}" 
+					role="menu" 
+					aria-label="Legal submenu"
+					aria-hidden={!dropdownOpen}
+				>
+					<li role="none"><a href="/privacy" class="dropdown-link" role="menuitem">Privacy Policy</a></li>
+					<li role="none"><a href="/terms" class="dropdown-link" role="menuitem">Terms of Service</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -37,23 +68,32 @@
 		<button 
 			class="mobile-menu-button"
 			onclick={toggleMobileMenu}
-			aria-label="Toggle menu"
+			onkeydown={handleKeyDown}
+			aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+			aria-expanded={mobileMenuOpen}
+			aria-controls="mobile-menu"
 		>
-			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}"></span>
-			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}"></span>
-			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}"></span>
+			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}" aria-hidden="true"></span>
+			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}" aria-hidden="true"></span>
+			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}" aria-hidden="true"></span>
 		</button>
 	</div>
 	
-		<!-- Mobile Navigation Menu -->
-	<div class="mobile-menu {mobileMenuOpen ? 'open' : ''}">
-		<ul class="mobile-nav-links">
-			<li><a href="/" class="mobile-nav-link" onclick={closeMobileMenu}>Home</a></li>
-			<li><a href="#features" class="mobile-nav-link" onclick={closeMobileMenu}>Features</a></li>
-			<li><a href="#about" class="mobile-nav-link" onclick={closeMobileMenu}>About</a></li>
-			<li><a href="#download" class="mobile-nav-link" onclick={closeMobileMenu}>Download</a></li>
-			<li><a href="/privacy" class="mobile-nav-link" onclick={closeMobileMenu}>Privacy Policy</a></li>
-			<li><a href="/terms" class="mobile-nav-link" onclick={closeMobileMenu}>Terms of Service</a></li>
+	<!-- Mobile Navigation Menu -->
+	<div 
+		id="mobile-menu"
+		class="mobile-menu {mobileMenuOpen ? 'open' : ''}"
+		aria-hidden={!mobileMenuOpen}
+		role="menu"
+		aria-label="Mobile navigation menu"
+	>
+		<ul class="mobile-nav-links" role="none">
+			<li role="none"><a href="/" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Home</a></li>
+			<li role="none"><a href="#features" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Features</a></li>
+			<li role="none"><a href="#about" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">About</a></li>
+			<li role="none"><a href="#download" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Download</a></li>
+			<li role="none"><a href="/privacy" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Privacy Policy</a></li>
+			<li role="none"><a href="/terms" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Terms of Service</a></li>
 		</ul>
 	</div>
 </nav>
@@ -67,6 +107,7 @@
 		backdrop-filter: blur(10px);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+		will-change: transform;
 	}
 	
 	.nav-container {
@@ -125,10 +166,27 @@
 		padding: 0.5rem 0;
 		position: relative;
 		transition: color 0.2s;
+		display: inline-block;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: inherit;
 	}
 	
 	.nav-link:hover {
 		color: white;
+	}
+	
+	.nav-link:focus-visible {
+		outline: 2px solid #6366f1;
+		outline-offset: 4px;
+		border-radius: 0.25rem;
+	}
+	
+	.dropdown-trigger {
+		width: 100%;
+		text-align: left;
 	}
 	
 	.nav-link::after {
@@ -150,10 +208,12 @@
 		position: relative;
 	}
 	
-	.nav-dropdown:hover .dropdown-menu {
+	.nav-dropdown:hover .dropdown-menu,
+	.nav-dropdown:focus-within .dropdown-menu,
+	.dropdown-menu.open {
 		opacity: 1;
 		visibility: visible;
-		transform: translateY(0);
+		transform: translateX(-50%) translateY(0);
 	}
 	
 	.dropdown-menu {
@@ -198,6 +258,12 @@
 		cursor: pointer;
 		padding: 0.5rem;
 		z-index: 1001;
+		border-radius: 0.25rem;
+	}
+	
+	.mobile-menu-button:focus-visible {
+		outline: 2px solid #6366f1;
+		outline-offset: 2px;
 	}
 	
 	@media (min-width: 768px) {
@@ -263,10 +329,17 @@
 		display: block;
 		transition: color 0.2s, padding-left 0.2s;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+		border-radius: 0.25rem;
 	}
 	
 	.mobile-nav-link:hover {
 		color: white;
+		padding-left: 0.5rem;
+	}
+	
+	.mobile-nav-link:focus-visible {
+		outline: 2px solid #6366f1;
+		outline-offset: 2px;
 		padding-left: 0.5rem;
 	}
 </style>
