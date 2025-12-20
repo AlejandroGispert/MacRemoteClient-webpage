@@ -1,0 +1,8 @@
+Contact: mailto:alejandrobusiness2022@gmail.com
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: en
+
+# Security Policy
+# We appreciate security researchers who help keep our services safe.
+# While we do not offer monetary rewards, we acknowledge and appreciate responsible disclosure.
+

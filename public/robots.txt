@@ -1,0 +1,11 @@
+# robots.txt for Mac Remote Controller website
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas if any
+# Disallow: /admin/
+# Disallow: /private/
+
+
+
