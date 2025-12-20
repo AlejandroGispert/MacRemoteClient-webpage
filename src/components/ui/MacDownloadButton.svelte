@@ -1,5 +1,5 @@
 <script>
-	import { toastInfo } from '../../lib/toast';
+	import { toastInfo, toastSuccess } from '../../lib/toast';
 	
 	let { url = '#', size = 'large' } = $props();
 	
@@ -16,12 +16,19 @@
 				description: 'The Mac companion app will be available for download soon!',
 				duration: 4000,
 			});
+		} else {
+			// Show success toast when download starts
+			toastSuccess('Download Started', {
+				description: 'Your Mac app download has begun. Check your Downloads folder.',
+				duration: 4000,
+			});
 		}
 	}
 </script>
 
 <a 
 	href={url} 
+	download={url !== '#' && url !== '' ? 'MacRemoteController-v1.dmg' : undefined}
 	target={url !== '#' && url !== '' ? '_blank' : undefined}
 	rel={url !== '#' && url !== '' ? 'noopener noreferrer' : undefined}
 	class="mac-download-button {size === 'large' ? 'large' : size === 'medium' ? 'medium' : 'small'}"
