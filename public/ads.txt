@@ -1,0 +1,14 @@
+# ads.txt file for Mac Remote Controller Android
+
+# This file authorizes Google AdMob to sell ad inventory for ads related to the mobile app we promote
+
+# 
+
+# Publisher ID: 5806299023049544
+
+# App ID: ca-app-pub-5806299023049544~6669021487
+
+
+
+google.com, pub-5806299023049544, DIRECT, f08c47fec0942fa0
+
