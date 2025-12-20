@@ -49,7 +49,7 @@
 		font-weight: 600;
 		transition: all 0.3s ease;
 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-		border: 1px solid rgba(255, 255, 255, 0.2);
+		border: 1px solid #6366f1;
 		cursor: pointer;
 	}
 	
@@ -57,7 +57,7 @@
 		transform: translateY(-2px);
 		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 		background: rgba(255, 255, 255, 0.15);
-		border-color: rgba(255, 255, 255, 0.3);
+		border-color: #6366f1;
 	}
 	
 	.mac-download-button:active {
