@@ -1,0 +1,32 @@
+{
+  "name": "macremoteclient-webpage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroGispert/MacRemoteClient-webpage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AlejandroGispert/MacRemoteClient-webpage/issues"
+  },
+  "homepage": "https://github.com/AlejandroGispert/MacRemoteClient-webpage#readme",
+  "dependencies": {
+    "@astrojs/svelte": "^7.2.4",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.16.6",
+    "svelte": "^5.46.0",
+    "tailwindcss": "^3"
+  }
+}
