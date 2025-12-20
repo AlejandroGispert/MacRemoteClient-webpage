@@ -26,6 +26,7 @@
     "@astrojs/svelte": "^7.2.4",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.16.6",
+    "firebase": "^12.7.0",
     "sharp": "^0.34.5",
     "svelte": "^5.46.0",
     "tailwindcss": "^3"

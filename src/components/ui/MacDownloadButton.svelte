@@ -1,5 +1,6 @@
 <script>
 	import { toastInfo, toastSuccess } from '../../lib/toast';
+	import { trackDownloadClick } from '../../lib/analytics';
 	
 	let { url = '#', size = 'large' } = $props();
 	
@@ -17,6 +18,9 @@
 				duration: 4000,
 			});
 		} else {
+			// Track download click in Firebase Analytics
+			trackDownloadClick('mac');
+			
 			// Show success toast when download starts
 			toastSuccess('Download Started', {
 				description: 'Your Mac app download has begun. Check your Downloads folder.',
