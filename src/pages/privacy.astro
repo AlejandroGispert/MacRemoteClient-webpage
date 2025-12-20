@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Privacy Policy - Mac Remote Controller">
+	<article class="legal-page">
+		<div class="container">
+			<header class="legal-header">
+				<h1>Privacy Policy</h1>
+				<p class="last-updated">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+			</header>
+
+			<div class="legal-content">
+				<section>
+					<h2>1. Introduction</h2>
+					<p>
+						Mac Remote Controller ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and Mac companion application.
+					</p>
+				</section>
+
+				<section>
+					<h2>2. Information We Collect</h2>
+					<h3>2.1 Local Network Communication</h3>
+					<p>
+						Mac Remote Controller operates entirely over your local network. We do not collect, store, or transmit any personal data to external servers. All communication occurs directly between your Android device and your Mac on your local network.
+					</p>
+					
+					<h3>2.2 Device Information</h3>
+					<p>
+						The application may access device information necessary for establishing local network connections, such as IP addresses and network identifiers. This information is used solely for the purpose of establishing connections between your devices and is not stored or transmitted outside your local network.
+					</p>
+				</section>
+
+				<section>
+					<h2>3. How We Use Your Information</h2>
+					<p>
+						We use the information collected solely to:
+					</p>
+					<ul>
+						<li>Establish and maintain connections between your Android device and Mac</li>
+						<li>Enable remote control functionality</li>
+						<li>Improve the performance and reliability of the application</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>4. Data Storage</h2>
+					<p>
+						All data remains on your devices. We do not store any personal information on external servers. Any preferences or settings you configure are stored locally on your devices.
+					</p>
+				</section>
+
+				<section>
+					<h2>5. Third-Party Services</h2>
+					<p>
+						Mac Remote Controller may use third-party services (such as Google Play Services) that have their own privacy policies. We encourage you to review the privacy policies of these third-party services.
+					</p>
+				</section>
+
+				<section>
+					<h2>6. In-App Purchases</h2>
+					<p>
+						If you make in-app purchases, payment information is processed by Google Play Store or Apple App Store. We do not have access to your payment information.
+					</p>
+				</section>
+
+				<section>
+					<h2>7. Children's Privacy</h2>
+					<p>
+						Our application is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13.
+					</p>
+				</section>
+
+				<section>
+					<h2>8. Changes to This Privacy Policy</h2>
+					<p>
+						We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
+					</p>
+				</section>
+
+				<section>
+					<h2>9. Contact Us</h2>
+					<p>
+						If you have any questions about this Privacy Policy, please contact us through the app's support channels or visit our website.
+					</p>
+				</section>
+			</div>
+		</div>
+	</article>
+</Layout>
+
+<style>
+	.legal-page {
+		padding: 2rem 1rem;
+		min-height: 100vh;
+	}
+
+	.container {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.legal-header {
+		margin-bottom: 3rem;
+		text-align: center;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		padding-bottom: 2rem;
+	}
+
+	.legal-header h1 {
+		font-size: 3rem;
+		font-weight: 800;
+		margin-bottom: 1rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.last-updated {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 0.875rem;
+	}
+
+	.legal-content {
+		line-height: 1.8;
+	}
+
+	.legal-content section {
+		margin-bottom: 3rem;
+	}
+
+	.legal-content h2 {
+		font-size: 1.75rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		color: white;
+		margin-top: 2rem;
+	}
+
+	.legal-content h3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.legal-content p {
+		color: rgba(255, 255, 255, 0.8);
+		margin-bottom: 1rem;
+	}
+
+	.legal-content ul {
+		color: rgba(255, 255, 255, 0.8);
+		margin-left: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	.legal-content li {
+		margin-bottom: 0.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.legal-page {
+			padding: 4rem 2rem;
+		}
+	}
+</style>
+

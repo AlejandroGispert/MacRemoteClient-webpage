@@ -39,14 +39,14 @@
 			onclick={toggleMobileMenu}
 			aria-label="Toggle menu"
 		>
-			<span class="hamburger-line" class:open={mobileMenuOpen}></span>
-			<span class="hamburger-line" class:open={mobileMenuOpen}></span>
-			<span class="hamburger-line" class:open={mobileMenuOpen}></span>
+			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}"></span>
+			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}"></span>
+			<span class="hamburger-line {mobileMenuOpen ? 'open' : ''}"></span>
 		</button>
 	</div>
 	
 		<!-- Mobile Navigation Menu -->
-	<div class="mobile-menu" class:open={mobileMenuOpen}>
+	<div class="mobile-menu {mobileMenuOpen ? 'open' : ''}">
 		<ul class="mobile-nav-links">
 			<li><a href="/" class="mobile-nav-link" onclick={closeMobileMenu}>Home</a></li>
 			<li><a href="#features" class="mobile-nav-link" onclick={closeMobileMenu}>Features</a></li>

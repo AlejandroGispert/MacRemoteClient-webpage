@@ -1,0 +1,131 @@
+<footer class="footer">
+	<div class="footer-container">
+		<div class="footer-content">
+			<div class="footer-brand">
+				<img src="/ic_launcher_round.png" alt="Mac Remote Controller" class="footer-logo" />
+				<span class="footer-brand-text">Mac Remote Controller</span>
+			</div>
+			<div class="footer-links">
+				<div class="footer-section">
+					<h3 class="footer-title">Product</h3>
+					<ul class="footer-link-list">
+						<li><a href="/#features">Features</a></li>
+						<li><a href="/#download">Download</a></li>
+						<li><a href="/#about">About</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
+					<h3 class="footer-title">Legal</h3>
+					<ul class="footer-link-list">
+						<li><a href="/privacy">Privacy Policy</a></li>
+						<li><a href="/terms">Terms of Service</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<p class="footer-copyright">
+				&copy; {new Date().getFullYear()} Mac Remote Controller. All rights reserved.
+			</p>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: rgba(15, 15, 35, 0.95);
+		backdrop-filter: blur(10px);
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		padding: 3rem 2rem 1.5rem;
+		margin-top: 4rem;
+	}
+
+	.footer-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.footer-content {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+
+	@media (min-width: 768px) {
+		.footer-content {
+			grid-template-columns: 1fr 2fr;
+		}
+	}
+
+	.footer-brand {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.footer-logo {
+		width: 40px;
+		height: 40px;
+		border-radius: 8px;
+	}
+
+	.footer-brand-text {
+		font-weight: 600;
+		font-size: 1.125rem;
+		color: white;
+	}
+
+	.footer-links {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 2rem;
+	}
+
+	.footer-section {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.footer-title {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: rgba(255, 255, 255, 0.9);
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.footer-link-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.footer-link-list a {
+		color: rgba(255, 255, 255, 0.7);
+		text-decoration: none;
+		font-size: 0.875rem;
+		transition: color 0.2s;
+	}
+
+	.footer-link-list a:hover {
+		color: white;
+	}
+
+	.footer-bottom {
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		padding-top: 1.5rem;
+		text-align: center;
+	}
+
+	.footer-copyright {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 0.875rem;
+		margin: 0;
+	}
+</style>
+

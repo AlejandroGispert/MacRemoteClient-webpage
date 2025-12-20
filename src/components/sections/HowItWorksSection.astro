@@ -1,0 +1,65 @@
+---
+import StepCard from './StepCard.astro';
+---
+
+<section id="how-it-works" class="section">
+	<div class="container">
+		<h2 class="section-title">How it works</h2>
+		<div class="how-it-works-content">
+			<StepCard 
+				number={1}
+				title="Download the Mac App"
+				description="Download and install the Mac Remote Controller companion app on your Mac from our official website."
+			/>
+			<StepCard 
+				number={2}
+				title="Connect to Same Network"
+				description="Make sure your Mac and Android device are connected to the same local network."
+			/>
+			<StepCard 
+				number={3}
+				title="Start a Session"
+				description="Open the app on both devices and tap Connect to start a session."
+			/>
+			<StepCard 
+				number={4}
+				title="Control Your Mac"
+				description="The connection starts only when you tap Connect and can be stopped at any time."
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	.section {
+		padding: 4rem 2rem;
+	}
+	
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	
+	.section-title {
+		font-size: 2.5rem;
+		font-weight: 700;
+		text-align: center;
+		margin-bottom: 3rem;
+		color: white;
+	}
+	
+	.how-it-works-content {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	
+	@media (min-width: 768px) {
+		.how-it-works-content {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>
+

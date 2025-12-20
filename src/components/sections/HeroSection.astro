@@ -1,0 +1,135 @@
+---
+import DownloadButton from '../ui/DownloadButton.svelte';
+import MacDownloadButton from '../ui/MacDownloadButton.svelte';
+---
+
+<section class="hero-section">
+	<div class="hero-content">
+		<div class="hero-left">
+			<img src="/macremoteapp.png" alt="Mac Remote Controller" class="hero-logo" />
+			<h1 class="hero-title">Mac Remote Controller</h1>
+			<p class="hero-subtitle">Control your Mac from your Android phone. The perfect companion app for seamless remote control.</p>
+			<div class="hero-buttons">
+				<DownloadButton url="https://play.google.com/store/apps/details?id=com.macremote" size="large" client:load />
+				<MacDownloadButton url="#" size="large" client:load />
+			</div>
+		</div>
+		<div class="hero-right">
+			<div class="phone-frame">
+				<img src="/appscreen.jpg" alt="Mac Remote Controller App Screenshot" class="hero-screenshot" />
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero-section {
+		padding: 4rem 2rem;
+		min-height: 80vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.hero-content {
+		max-width: 1200px;
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 3rem;
+		align-items: center;
+	}
+	
+	@media (min-width: 768px) {
+		.hero-content {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	
+	.hero-left {
+		text-align: center;
+	}
+	
+	@media (min-width: 768px) {
+		.hero-left {
+			text-align: left;
+		}
+	}
+	
+	.hero-logo {
+		width: 120px;
+		height: 120px;
+		margin: 0 auto 2rem;
+		border-radius: 1rem;
+		object-fit: cover;
+	}
+	
+	@media (min-width: 768px) {
+		.hero-logo {
+			margin: 0 0 2rem 0;
+		}
+	}
+	
+	.hero-title {
+		font-size: 3rem;
+		font-weight: 800;
+		margin-bottom: 1rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		line-height: 1.2;
+	}
+	
+	@media (min-width: 768px) {
+		.hero-title {
+			font-size: 4rem;
+		}
+	}
+	
+	.hero-subtitle {
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.8);
+		margin-bottom: 2rem;
+		line-height: 1.6;
+	}
+	
+	.hero-buttons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+	
+	@media (min-width: 768px) {
+		.hero-buttons {
+			flex-direction: row;
+			justify-content: flex-start;
+		}
+	}
+	
+	.hero-right {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.phone-frame {
+		background: rgba(0, 0, 0, 0.9);
+		border-radius: 2.5rem;
+		padding: 4px;
+		border: 8px solid rgba(0, 0, 0, 0.8);
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+		display: inline-block;
+	}
+	
+	.hero-screenshot {
+		max-width: 280px;
+		width: 100%;
+		height: auto;
+		border-radius: 2rem;
+		display: block;
+		object-fit: cover;
+	}
+</style>
+
