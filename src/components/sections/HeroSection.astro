@@ -25,15 +25,28 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 		</div>
 		<div class="hero-right">
 			<div class="phone-frame">
-				<img 
-					src="/appscreen.jpg" 
-					alt="Mac Remote Controller App Screenshot" 
-					class="hero-screenshot"
-					width="280"
-					height="600"
-					loading="lazy"
-					decoding="async"
-				/>
+				<div class="screenshot-container">
+					<img 
+						src="/appscreen.jpg" 
+						alt="Mac Remote Controller App Screenshot" 
+						class="hero-screenshot active"
+						id="screenshot-1"
+						width="280"
+						height="600"
+						loading="lazy"
+						decoding="async"
+					/>
+					<img 
+						src="/appscreen2.jpg" 
+						alt="Mac Remote Controller App Screenshot 2" 
+						class="hero-screenshot"
+						id="screenshot-2"
+						width="280"
+						height="600"
+						loading="lazy"
+						decoding="async"
+					/>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -138,15 +151,107 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 		border: 8px solid #6366f1;
 		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 		display: inline-block;
+		width: fit-content;
+	}
+	
+	.screenshot-container {
+		position: relative;
+		width: 280px;
+		height: 600px;
+		overflow: hidden;
+		border-radius: 2rem;
 	}
 	
 	.hero-screenshot {
-		max-width: 280px;
-		width: 100%;
-		height: auto;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 280px;
+		height: 600px;
 		border-radius: 2rem;
 		display: block;
 		object-fit: cover;
+		opacity: 0;
+		transform: translateX(100%);
+		transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+		pointer-events: none;
+		will-change: transform, opacity;
+	}
+	
+	.hero-screenshot.active {
+		opacity: 1;
+		transform: translateX(0);
+		pointer-events: auto;
+		z-index: 1;
+	}
+	
+	.hero-screenshot.swiping-out {
+		opacity: 0;
+		transform: translateX(-100%);
+		z-index: 0;
+	}
+	
+	.hero-screenshot.swiping-in {
+		opacity: 1;
+		transform: translateX(0);
+		z-index: 2;
 	}
 </style>
+
+<script is:inline>
+	(function() {
+		function initScreenshotSwipe() {
+			const screenshot1 = document.getElementById('screenshot-1');
+			const screenshot2 = document.getElementById('screenshot-2');
+			
+			if (!screenshot1 || !screenshot2) {
+				// Retry if elements aren't ready yet
+				setTimeout(initScreenshotSwipe, 100);
+				return;
+			}
+			
+			let currentScreenshot = 1;
+			let intervalId = null;
+			
+			function switchScreenshot() {
+				if (currentScreenshot === 1) {
+					// Swipe out screenshot 1, swipe in screenshot 2
+					screenshot1.classList.remove('active');
+					screenshot1.classList.add('swiping-out');
+					
+					setTimeout(() => {
+						screenshot2.classList.remove('swiping-out');
+						screenshot2.classList.add('swiping-in', 'active');
+						screenshot1.classList.remove('swiping-out');
+						currentScreenshot = 2;
+					}, 50);
+				} else {
+					// Swipe out screenshot 2, swipe in screenshot 1
+					screenshot2.classList.remove('active');
+					screenshot2.classList.add('swiping-out');
+					
+					setTimeout(() => {
+						screenshot1.classList.remove('swiping-out');
+						screenshot1.classList.add('swiping-in', 'active');
+						screenshot2.classList.remove('swiping-out', 'swiping-in');
+						currentScreenshot = 1;
+					}, 50);
+				}
+			}
+			
+			// Start the transition after 3 seconds
+			setTimeout(() => {
+				switchScreenshot();
+				// Continue switching every 5 seconds
+				intervalId = setInterval(switchScreenshot, 5000);
+			}, 3000);
+		}
+		
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', initScreenshotSwipe);
+		} else {
+			initScreenshotSwipe();
+		}
+	})();
+</script>
 
