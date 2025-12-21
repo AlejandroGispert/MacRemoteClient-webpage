@@ -7,81 +7,151 @@ import Layout from '../layouts/Layout.astro';
 		<div class="container">
 			<header class="legal-header">
 				<h1>Privacy Policy</h1>
-				<p class="last-updated">Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+				<p class="last-updated">Effective Date: December 21, 2025</p>
 			</header>
 
 			<div class="legal-content">
 				<section>
-					<h2>1. Introduction</h2>
+					<h2>1. Overview</h2>
 					<p>
-						Mac Remote Controller ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and Mac companion application.
+						Mac Remote Controller is a utility application that allows users to control their Mac computer using an Android device. The app operates over a local Wi-Fi network and requires the companion software "Mac Remote Controller Server" installed on the user's Mac computer.
+					</p>
+					<p>
+						Mac Remote Controller ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application, Mac companion application, and website.
 					</p>
 				</section>
 
 				<section>
-					<h2>2. Information We Collect</h2>
-					<h3>2.1 Local Network Communication</h3>
+					<h2>2. Data Collection</h2>
 					<p>
-						Mac Remote Controller operates entirely over your local network. We do not collect, store, or transmit any personal data to external servers. All communication occurs directly between your Android device and your Mac on your local network.
+						We respect your privacy. The Mac Remote Controller application does <strong>not</strong> collect, store, or transmit any personal or sensitive user data from the mobile app or Mac server application.
+					</p>
+					<ul>
+						<li><strong>No account or login is required</strong> - The app works entirely offline on your local network</li>
+						<li><strong>No user data is stored or shared</strong> - All functionality operates within your local environment</li>
+						<li><strong>No personal information is collected</strong> - We do not access your contacts, photos, files, or any other personal data</li>
+					</ul>
+					
+					<h3>2.1 Website Analytics</h3>
+					<p>
+						Our website uses Firebase Analytics (provided by Google) to understand how visitors interact with our website. This service collects anonymous usage statistics such as:
+					</p>
+					<ul>
+						<li>Page views and navigation patterns</li>
+						<li>Download button clicks (Android app and Mac app)</li>
+						<li>General location data (country/region level, not precise location)</li>
+						<li>Device type and browser information</li>
+					</ul>
+					<p>
+						This data is aggregated and anonymized. It does not identify you personally and is used solely to improve our website and understand user preferences. You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.
 					</p>
 					
-					<h3>2.2 Device Information</h3>
+					<h3>2.2 Local Network Communication</h3>
+					<p>
+						The Mac Remote Controller app operates entirely over your local network. All communication occurs directly between your Android device and your Mac on your local network. We do not collect, store, or transmit any personal data to external servers.
+					</p>
+					
+					<h3>2.3 Device Information</h3>
 					<p>
 						The application may access device information necessary for establishing local network connections, such as IP addresses and network identifiers. This information is used solely for the purpose of establishing connections between your devices and is not stored or transmitted outside your local network.
 					</p>
 				</section>
 
 				<section>
-					<h2>3. How We Use Your Information</h2>
+					<h2>3. Permissions</h2>
 					<p>
-						We use the information collected solely to:
+						To function correctly, the Mac Remote Controller app may request access to:
+					</p>
+					<ul>
+						<li><strong>Wi-Fi / Network Access:</strong> Used solely to discover and connect to the server application on your Mac over your local network</li>
+					</ul>
+					<p>
+						These permissions are used <strong>only</strong> for local communication between your Android device and Mac computer. No data is sent to external servers. The app does not require access to your contacts, photos, location, camera, microphone, or any other sensitive permissions.
+					</p>
+				</section>
+
+				<section>
+					<h2>4. How We Use Your Information</h2>
+					<p>
+						Any information collected is used solely to:
 					</p>
 					<ul>
 						<li>Establish and maintain connections between your Android device and Mac</li>
 						<li>Enable remote control functionality</li>
 						<li>Improve the performance and reliability of the application</li>
+						<li>Understand website usage patterns (website analytics only)</li>
 					</ul>
 				</section>
 
 				<section>
-					<h2>4. Data Storage</h2>
+					<h2>5. Data Storage</h2>
 					<p>
-						All data remains on your devices. We do not store any personal information on external servers. Any preferences or settings you configure are stored locally on your devices.
+						All app data remains on your devices. We do not store any personal information on external servers. Any preferences or settings you configure are stored locally on your devices. Website analytics data is stored by Google Firebase Analytics in accordance with their privacy policy.
 					</p>
 				</section>
 
 				<section>
-					<h2>5. Third-Party Services</h2>
+					<h2>6. Third-Party Services</h2>
 					<p>
-						Mac Remote Controller may use third-party services (such as Google Play Services) that have their own privacy policies. We encourage you to review the privacy policies of these third-party services.
+						The Mac Remote Controller app does <strong>not</strong> use any third-party services, advertising SDKs, or analytics platforms within the mobile or Mac applications.
+					</p>
+					<p>
+						Our website uses the following third-party services:
+					</p>
+					<ul>
+						<li><strong>Firebase Analytics (Google):</strong> For website usage analytics. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
+						<li><strong>Google Play Store:</strong> For app distribution. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
+					</ul>
+					<p>
+						We encourage you to review the privacy policies of these third-party services.
 					</p>
 				</section>
 
 				<section>
-					<h2>6. In-App Purchases</h2>
+					<h2>7. Data Security</h2>
 					<p>
-						If you make in-app purchases, payment information is processed by Google Play Store or Apple App Store. We do not have access to your payment information.
+						Since all communication occurs over your local network and no data is transmitted to external servers, your data remains secure within your local environment. We implement appropriate technical measures to ensure the security of your local network communications.
 					</p>
 				</section>
 
 				<section>
-					<h2>7. Children's Privacy</h2>
+					<h2>8. Children's Privacy</h2>
 					<p>
-						Our application is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13.
+						Since the app does not collect any personal data, it is suitable for all age groups. However, we recommend parental supervision where required by applicable laws. Our application is not intended for children under the age of 13, and we do not knowingly collect personal information from children under 13.
 					</p>
 				</section>
 
 				<section>
-					<h2>8. Changes to This Privacy Policy</h2>
+					<h2>9. Your Rights</h2>
 					<p>
-						We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
+						You have the right to:
+					</p>
+					<ul>
+						<li>Use the app without providing any personal information</li>
+						<li>Control all data stored locally on your devices</li>
+						<li>Opt out of website analytics using browser settings or the Google Analytics Opt-out Add-on</li>
+						<li>Uninstall the app at any time, which removes all locally stored data</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>10. Changes to This Privacy Policy</h2>
+					<p>
+						We may update this Privacy Policy from time to time. If we make any changes, we will update the "Effective Date" at the top of this page and post the updated policy on this page. You are encouraged to review this Privacy Policy periodically to stay informed about how we protect your information.
 					</p>
 				</section>
 
 				<section>
-					<h2>9. Contact Us</h2>
+					<h2>11. Contact Us</h2>
 					<p>
-						If you have any questions about this Privacy Policy, please contact us through the app's support channels or visit our website.
+						If you have any questions or concerns about this Privacy Policy, please contact us at:
+					</p>
+					<p>
+						<strong>Email:</strong> <a href="mailto:alejandrobusiness2022@gmail.com">alejandrobusiness2022@gmail.com</a>
+					</p>
+					<p>
+						<strong>Company:</strong> AG-sound Denmark<br>
+						<strong>Copyright © 2025</strong>
 					</p>
 				</section>
 			</div>
@@ -159,6 +229,21 @@ import Layout from '../layouts/Layout.astro';
 
 	.legal-content li {
 		margin-bottom: 0.5rem;
+	}
+
+	.legal-content a {
+		color: #667eea;
+		text-decoration: underline;
+		transition: color 0.2s;
+	}
+
+	.legal-content a:hover {
+		color: #764ba2;
+	}
+
+	.legal-content strong {
+		color: rgba(255, 255, 255, 0.95);
+		font-weight: 600;
 	}
 
 	@media (min-width: 768px) {
