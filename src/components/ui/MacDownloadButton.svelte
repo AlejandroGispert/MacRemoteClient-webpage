@@ -32,11 +32,11 @@
 
 <a 
 	href={url} 
-	download={url !== '#' && url !== '' ? 'MacRemoteController-v1.dmg' : undefined}
+	download={url !== '#' && url !== '' ? 'MacRCDesktop_v1.3.dmg' : undefined}
 	target={url !== '#' && url !== '' ? '_blank' : undefined}
 	rel={url !== '#' && url !== '' ? 'noopener noreferrer' : undefined}
 	class="mac-download-button {size === 'large' ? 'large' : size === 'medium' ? 'medium' : 'small'}"
-	aria-label="Download Mac Remote Controller Mac companion app"
+	aria-label="Download Mac Remote Controller Desktop app"
 	onclick={handleClick}
 >
 	<svg class="mac-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -44,7 +44,7 @@
 	</svg>
 	<div class="download-text">
 		<span class="download-label">Download</span>
-		<span class="download-platform">Mac Server</span>
+		<span class="download-platform">Mac Desktop</span>
 	</div>
 </a>
 
