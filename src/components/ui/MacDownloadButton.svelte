@@ -32,7 +32,7 @@
 
 <a 
 	href={url} 
-	download={url !== '#' && url !== '' ? 'MacRCDesktop_v1.4.dmg' : undefined}
+	download={url !== '#' && url !== '' ? 'MacRCDesktop_v1.5.dmg' : undefined}
 	target={url !== '#' && url !== '' ? '_blank' : undefined}
 	rel={url !== '#' && url !== '' ? 'noopener noreferrer' : undefined}
 	class="mac-download-button {size === 'large' ? 'large' : size === 'medium' ? 'medium' : 'small'}"
