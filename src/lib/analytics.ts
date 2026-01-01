@@ -1,4 +1,5 @@
 import { firebaseConfig } from './firebase';
+import { hasAnalyticsConsentGranted } from './consent';
 
 let app: any = null;
 let analytics: any = null;
@@ -16,6 +17,10 @@ function hasValidFirebaseConfig() {
 export function initAnalytics() {
 	if (typeof window === 'undefined') {
 		return Promise.resolve(null); // Server-side rendering, skip
+	}
+
+	if (!hasAnalyticsConsentGranted()) {
+		return Promise.resolve(null);
 	}
 
 	if (!hasValidFirebaseConfig()) {
@@ -61,6 +66,10 @@ export function initAnalytics() {
 // Track custom events
 export function trackEvent(eventName: string, eventParams?: Record<string, any>) {
 	if (typeof window === 'undefined') {
+		return;
+	}
+
+	if (!hasAnalyticsConsentGranted()) {
 		return;
 	}
 

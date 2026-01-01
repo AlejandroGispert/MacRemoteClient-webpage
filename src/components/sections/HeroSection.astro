@@ -209,10 +209,14 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 		.phone-frame {
 			border-width: 6px;
 			border-radius: 2.25rem;
+			/* Ensure the *whole* frame (including border) fits tiny screens */
+			width: min(320px, 100%);
+			display: block;
+			margin: 0 auto;
 		}
 
 		.screenshot-container {
-			width: min(280px, 100%);
+			width: 100%;
 			aspect-ratio: 7 / 15;
 			height: auto;
 		}
