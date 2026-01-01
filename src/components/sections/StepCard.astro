@@ -27,6 +27,13 @@ const { number, title, description } = Astro.props;
 		border: 1px solid rgba(255, 255, 255, 0.1);
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 	}
+
+	/* Mobile perf: backdrop-filter is expensive */
+	@media (max-width: 768px) {
+		.step-card {
+			backdrop-filter: none;
+		}
+	}
 	
 	.step-card:hover {
 		transform: translateY(-5px);

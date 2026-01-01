@@ -342,5 +342,14 @@
 		outline-offset: 2px;
 		padding-left: 0.5rem;
 	}
+
+	/* Mobile perf: backdrop-filter is expensive (often causes scroll jank) */
+	@media (max-width: 768px) {
+		.navbar,
+		.dropdown-menu,
+		.mobile-menu {
+			backdrop-filter: none;
+		}
+	}
 </style>
 

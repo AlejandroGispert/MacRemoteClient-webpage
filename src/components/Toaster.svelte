@@ -72,6 +72,13 @@
 		animation: slideIn 0.3s ease-out;
 		color: rgba(255, 255, 255, 0.9);
 	}
+
+	/* Mobile perf: backdrop-filter is expensive */
+	@media (max-width: 768px) {
+		.toast {
+			backdrop-filter: none;
+		}
+	}
 	
 	@keyframes slideIn {
 		from {

@@ -1,63 +1,80 @@
-import { getAnalytics, logEvent } from 'firebase/analytics';
-import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './firebase';
 
-let app: ReturnType<typeof initializeApp> | null = null;
-let analytics: ReturnType<typeof getAnalytics> | null = null;
+let app: any = null;
+let analytics: any = null;
+let initPromise: Promise<any> | null = null;
+
+function hasValidFirebaseConfig() {
+	const values = Object.values(firebaseConfig);
+	const hasPlaceholders = values.some(
+		(val) => typeof val === 'string' && (val.includes('YOUR_') || val === '')
+	);
+	return !hasPlaceholders && !!firebaseConfig.measurementId && !String(firebaseConfig.measurementId).includes('YOUR_');
+}
 
 // Initialize Firebase Analytics
 export function initAnalytics() {
 	if (typeof window === 'undefined') {
-		return; // Server-side rendering, skip
+		return Promise.resolve(null); // Server-side rendering, skip
 	}
 
-	try {
-		// Debug: Log config (without sensitive data)
-		console.log('🔍 Initializing Firebase Analytics...', {
-			projectId: firebaseConfig.projectId,
-			hasApiKey: !!firebaseConfig.apiKey,
-			hasMeasurementId: !!firebaseConfig.measurementId
-		});
-
-		// Check if Firebase is already initialized
-		if (!app) {
-			app = initializeApp(firebaseConfig);
-			console.log('✅ Firebase app initialized');
+	if (!hasValidFirebaseConfig()) {
+		// Avoid pulling Firebase into the bundle when config isn't set
+		if (import.meta.env.DEV) {
+			console.warn('⚠️ Firebase analytics disabled: missing/placeholder config.');
 		}
-
-		// Initialize Analytics if not already done
-		if (!analytics && app) {
-			analytics = getAnalytics(app);
-			console.log('✅ Firebase Analytics initialized');
-		}
-	} catch (error) {
-		console.error('❌ Firebase Analytics initialization error:', error);
+		return Promise.resolve(null);
 	}
+
+	if (analytics) return Promise.resolve(analytics);
+	if (initPromise) return initPromise;
+
+	initPromise = (async () => {
+		try {
+			// Dynamic imports to keep Firebase out of the initial JS bundle
+			const appMod = await import('firebase/app');
+			const analyticsMod = await import('firebase/analytics');
+
+			if (!app) {
+				app = appMod.initializeApp(firebaseConfig);
+			}
+
+			if (!analytics && app) {
+				analytics = analyticsMod.getAnalytics(app);
+			}
+
+			return analytics;
+		} catch (error) {
+			if (import.meta.env.DEV) {
+				console.error('❌ Firebase Analytics initialization error:', error);
+			}
+			return null;
+		} finally {
+			// allow retry after failures
+			initPromise = null;
+		}
+	})();
+
+	return initPromise;
 }
 
 // Track custom events
 export function trackEvent(eventName: string, eventParams?: Record<string, any>) {
 	if (typeof window === 'undefined') {
-		console.warn('⚠️ trackEvent called on server-side, skipping');
 		return;
 	}
 
-	if (!analytics) {
-		console.warn('⚠️ Analytics not initialized yet, attempting to initialize...');
-		initAnalytics();
-		if (!analytics) {
-			console.error('❌ Analytics still not initialized after retry');
-			return;
+	void initAnalytics().then(async (a) => {
+		if (!a) return;
+		try {
+			const { logEvent } = await import('firebase/analytics');
+			logEvent(a, eventName, eventParams);
+		} catch (error) {
+			if (import.meta.env.DEV) {
+				console.error('❌ Firebase Analytics event tracking error:', error);
+			}
 		}
-	}
-
-	try {
-		console.log('📊 Tracking event:', eventName, eventParams);
-		logEvent(analytics, eventName, eventParams);
-		console.log('✅ Event tracked successfully');
-	} catch (error) {
-		console.error('❌ Firebase Analytics event tracking error:', error);
-	}
+	});
 }
 
 // Track download button clicks
@@ -76,4 +93,5 @@ export function trackPageView(pagePath: string, pageTitle?: string) {
 		page_title: pageTitle || document.title
 	});
 }
+
 

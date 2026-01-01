@@ -40,6 +40,13 @@
 		margin-top: 4rem;
 	}
 
+	/* Mobile perf: backdrop-filter is expensive */
+	@media (max-width: 768px) {
+		.footer {
+			backdrop-filter: none;
+		}
+	}
+
 	.footer-container {
 		max-width: 1200px;
 		margin: 0 auto;

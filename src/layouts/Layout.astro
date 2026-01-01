@@ -82,8 +82,8 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 			<slot />
 		</main>
 		<Footer />
-		<Toaster client:load />
-		<FirebaseAnalytics client:load />
+		<Toaster client:idle />
+		<FirebaseAnalytics client:idle />
 	</body>
 </html>
 
@@ -114,10 +114,16 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 		background-attachment: scroll;
 		background-size: cover;
 		background-repeat: no-repeat;
-		filter: blur(1.5px);
+
 		z-index: -1;
 		transform: translate3d(0, 0, 0);
 		will-change: transform;
+	}
+
+	/* Reduce layout/paint cost for below-the-fold sections */
+	:global(main > section:not(.hero-section)) {
+		content-visibility: auto;
+		contain-intrinsic-size: 900px;
 	}
 	
 	.skip-link {

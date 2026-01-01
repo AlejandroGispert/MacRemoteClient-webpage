@@ -24,6 +24,13 @@ const { icon, title, description } = Astro.props;
 		transition: transform 0.3s ease, box-shadow 0.3s ease;
 		text-align: center;
 	}
+
+	/* Mobile perf: backdrop-filter is expensive */
+	@media (max-width: 768px) {
+		.feature-card {
+			backdrop-filter: none;
+		}
+	}
 	
 	.feature-card:hover {
 		transform: translateY(-5px);

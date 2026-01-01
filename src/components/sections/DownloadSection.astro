@@ -24,6 +24,13 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 		backdrop-filter: blur(10px);
 	}
 
+	/* Mobile perf: backdrop-filter is expensive */
+	@media (max-width: 768px) {
+		.download-section {
+			backdrop-filter: none;
+		}
+	}
+
 	@media (max-width: 420px) {
 		.download-section {
 			padding: 4rem 1rem;
