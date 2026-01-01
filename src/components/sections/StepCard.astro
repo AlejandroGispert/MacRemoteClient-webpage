@@ -63,5 +63,23 @@ const { number, title, description } = Astro.props;
 		color: rgba(255, 255, 255, 0.7);
 		line-height: 1.6;
 	}
+
+	/* Small-screen tuning (~345px wide) */
+	@media (max-width: 420px) {
+		.step-card {
+			padding: 1.25rem;
+			gap: 1rem;
+		}
+
+		.step-number {
+			width: 2.25rem;
+			height: 2.25rem;
+			font-size: 1.125rem;
+		}
+
+		.step-title {
+			font-size: 1.125rem;
+		}
+	}
 </style>
 

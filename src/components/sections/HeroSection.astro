@@ -60,6 +60,12 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 		align-items: center;
 		justify-content: center;
 	}
+
+	@media (max-width: 420px) {
+		.hero-section {
+			padding: 3rem 1rem;
+		}
+	}
 	
 	.hero-content {
 		max-width: 1200px;
@@ -101,7 +107,7 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 	}
 	
 	.hero-title {
-		font-size: 3rem;
+		font-size: clamp(2.25rem, 8vw, 3rem);
 		font-weight: 800;
 		margin-bottom: 1rem;
 		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -152,6 +158,8 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 		display: inline-block;
 		width: fit-content;
+		max-width: 100%;
+		box-sizing: border-box;
 	}
 	
 	.screenshot-container {
@@ -195,6 +203,29 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 		opacity: 1;
 		transform: translateX(0);
 		z-index: 2;
+	}
+
+	@media (max-width: 420px) {
+		.phone-frame {
+			border-width: 6px;
+			border-radius: 2.25rem;
+		}
+
+		.screenshot-container {
+			width: min(280px, 100%);
+			aspect-ratio: 7 / 15;
+			height: auto;
+		}
+
+		.hero-screenshot {
+			width: 100%;
+			height: 100%;
+		}
+
+		.screenshot-container,
+		.hero-screenshot {
+			border-radius: 1.75rem;
+		}
 	}
 </style>
 

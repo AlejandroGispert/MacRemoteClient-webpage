@@ -23,6 +23,12 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 		background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
 		backdrop-filter: blur(10px);
 	}
+
+	@media (max-width: 420px) {
+		.download-section {
+			padding: 4rem 1rem;
+		}
+	}
 	
 	.container {
 		max-width: 1200px;
@@ -36,7 +42,7 @@ import MacDownloadButton from '../ui/MacDownloadButton.svelte';
 	}
 	
 	.download-title {
-		font-size: 3rem;
+		font-size: clamp(2rem, 7vw, 3rem);
 		font-weight: 800;
 		margin-bottom: 1rem;
 		color: white;

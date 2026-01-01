@@ -151,5 +151,12 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 		padding: 2rem;
 		position: relative;
 	}
+
+	/* Prevent horizontal overflow on very small devices (~345px wide) */
+	@media (max-width: 420px) {
+		main {
+			padding: 1rem;
+		}
+	}
 </style>
 

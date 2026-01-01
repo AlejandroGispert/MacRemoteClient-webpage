@@ -106,5 +106,14 @@
 		font-size: 1em;
 		font-weight: 700;
 	}
+
+	/* Better stacking + no overflow on very small screens (~345px wide) */
+	@media (max-width: 420px) {
+		.download-button.large {
+			width: 100%;
+			max-width: 320px;
+			justify-content: center;
+		}
+	}
 </style>
 
