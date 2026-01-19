@@ -1,14 +1,36 @@
 <script>
-	import { toastInfo, toastSuccess } from '../../lib/toast';
-	import { trackDownloadClick } from '../../lib/analytics';
+	import { toastInfo, toastSuccess, toastError } from '../../lib/toast';
+	import { trackDownloadClick, trackDownloadAttempt, trackDownloadBlocked } from '../../lib/analytics';
+	import { onMount } from 'svelte';
 	
 	let { url = '#', size = 'large' } = $props();
+	let isMac = false;
 	
 	const sizeClasses = {
 		large: 'px-8 py-4 text-lg',
 		medium: 'px-6 py-3 text-base',
 		small: 'px-4 py-2 text-sm'
 	};
+	
+	// Detect if user is on macOS (not iOS/iPadOS)
+	function detectMac() {
+		if (typeof window === 'undefined') return false;
+		
+		const platform = navigator.platform.toLowerCase();
+		const userAgent = navigator.userAgent.toLowerCase();
+		
+		// Check if it's iOS or iPadOS (exclude these)
+		if (/iphone|ipad|ipod/.test(userAgent)) {
+			return false;
+		}
+		
+		// Check if it's macOS
+		return /mac/.test(platform) || /macintosh/.test(userAgent);
+	}
+	
+	onMount(() => {
+		isMac = detectMac();
+	});
 	
 	function handleClick(event) {
 		if (url === '#' || url === '') {
@@ -17,16 +39,33 @@
 				description: 'The Mac companion app will be available for download soon!',
 				duration: 4000,
 			});
-		} else {
-			// Track download click in Firebase Analytics
-			trackDownloadClick('mac');
-			
-			// Show success toast when download starts
-			toastSuccess('Download Started', {
-				description: 'Your Mac app download has begun. Check your Downloads folder.',
-				duration: 4000,
-			});
+			// Track blocked download attempt (coming soon)
+			trackDownloadAttempt('mac', false, 'coming_soon');
+			return;
 		}
+		
+		// Check if user is on Mac
+		if (!isMac) {
+			event.preventDefault();
+			toastError('Windows Not Supported', {
+				description: 'We currently don\'t support Windows. This app is only available for macOS.',
+				duration: 5000,
+			});
+			// Track blocked download attempt for monitoring
+			trackDownloadAttempt('mac', false, 'not_mac');
+			trackDownloadBlocked('mac', 'not_mac');
+			return;
+		}
+		
+		// Track successful download click (Firebase + Umami)
+		trackDownloadClick('mac');
+		trackDownloadAttempt('mac', true);
+		
+		// Show success toast when download starts
+		toastSuccess('Download Started', {
+			description: 'Your Mac app download has begun. Check your Downloads folder.',
+			duration: 4000,
+		});
 	}
 </script>
 

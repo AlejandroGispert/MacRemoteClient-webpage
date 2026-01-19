@@ -93,6 +93,12 @@ export function trackDownloadClick(platform: 'android' | 'mac') {
 		button_type: platform === 'android' ? 'google_play' : 'mac_app',
 		timestamp: new Date().toISOString()
 	});
+	
+	// Also track with Umami for download monitoring
+	trackUmamiEvent('download_click', {
+		platform: platform,
+		button_type: platform === 'android' ? 'google_play' : 'mac_app'
+	});
 }
 
 // Track page views
@@ -100,6 +106,88 @@ export function trackPageView(pagePath: string, pageTitle?: string) {
 	trackEvent('page_view', {
 		page_path: pagePath,
 		page_title: pageTitle || document.title
+	});
+}
+
+// Umami Analytics Functions
+declare global {
+	interface Window {
+		umami?: {
+			track: (eventName: string, eventData?: Record<string, string | number>) => void;
+		};
+	}
+}
+
+// Track custom events with Umami
+export function trackUmamiEvent(eventName: string, eventData?: Record<string, string | number>) {
+	if (typeof window === 'undefined') {
+		return;
+	}
+
+	if (!hasAnalyticsConsentGranted()) {
+		return;
+	}
+
+	// Convert eventData to string values (Umami prefers string values)
+	const umamiData = eventData ? Object.fromEntries(
+		Object.entries(eventData).map(([key, value]) => [key, String(value)])
+	) : undefined;
+
+	const track = () => {
+		if (window.umami && typeof window.umami.track === 'function') {
+			try {
+				window.umami.track(eventName, umamiData);
+				if (import.meta.env.DEV) {
+					console.log('✅ Umami event tracked:', eventName, umamiData);
+				}
+			} catch (error) {
+				if (import.meta.env.DEV) {
+					console.error('❌ Umami Analytics event tracking error:', error);
+				}
+			}
+			return true;
+		}
+		return false;
+	};
+
+	// Try to track immediately
+	if (track()) {
+		return;
+	}
+
+	// If Umami isn't loaded yet, retry with exponential backoff
+	let attempts = 0;
+	const maxAttempts = 5;
+	const retry = () => {
+		attempts++;
+		if (track()) {
+			return;
+		}
+		if (attempts < maxAttempts) {
+			setTimeout(retry, Math.min(500 * attempts, 2000));
+		} else if (import.meta.env.DEV) {
+			console.warn('⚠️ Umami not loaded after', maxAttempts, 'attempts');
+		}
+	};
+
+	setTimeout(retry, 100);
+}
+
+// Track download attempts (including blocked ones for monitoring)
+export function trackDownloadAttempt(platform: 'android' | 'mac', success: boolean, reason?: string) {
+	trackUmamiEvent('download_attempt', {
+		platform: platform,
+		success: success ? 1 : 0,
+		reason: reason || 'none',
+		timestamp: Date.now()
+	});
+}
+
+// Track download blocked due to platform mismatch
+export function trackDownloadBlocked(platform: 'mac', reason: 'not_mac' | 'ios_device') {
+	trackUmamiEvent('download_blocked', {
+		platform: platform,
+		reason: reason
 	});
 }
 

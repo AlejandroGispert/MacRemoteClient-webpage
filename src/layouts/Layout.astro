@@ -3,6 +3,7 @@ import Navbar from '../components/layout/Navbar.svelte';
 import Footer from '../components/layout/Footer.astro';
 import Toaster from '../components/Toaster.svelte';
 import FirebaseAnalytics from '../components/FirebaseAnalytics.svelte';
+import UmamiAnalytics from '../components/UmamiAnalytics.svelte';
 import ConsentBanner from '../components/ConsentBanner.svelte';
 
 interface Props {
@@ -86,6 +87,7 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 		<ConsentBanner client:load />
 		<Toaster client:idle />
 		<FirebaseAnalytics client:idle />
+		<UmamiAnalytics client:idle />
 	</body>
 </html>
 
