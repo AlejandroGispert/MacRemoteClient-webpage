@@ -8,7 +8,6 @@ interface LogContext {
 
 class Logger {
   private formatMessage(level: LogLevel, message: string, context?: LogContext): string {
-    const timestamp = new Date().toISOString();
     const levelEmoji = {
       info: '✅',
       warn: '⚠️',
@@ -17,7 +16,7 @@ class Logger {
     }[level];
 
     const contextStr = context ? ` | ${JSON.stringify(context)}` : '';
-    return `${levelEmoji} [${timestamp}] [${level.toUpperCase()}] ${message}${contextStr}`;
+    return `${levelEmoji} [${level.toUpperCase()}] ${message}${contextStr}`;
   }
 
   private formatError(error: any): string {

@@ -26,6 +26,23 @@ pool.on('error', (error) => {
 // Initialize database tables
 export async function initializeDatabase() {
   try {
+    // Check if table exists and has old schema
+    const tableCheck = await pool.query(`
+      SELECT column_name 
+      FROM information_schema.columns 
+      WHERE table_name = 'email_verifications'
+    `);
+
+    const hasOldSchema = tableCheck.rows.some((row: any) => row.column_name === 'verification_token');
+
+    if (hasOldSchema) {
+      logger.warn('Old schema detected. Dropping and recreating table with new schema...');
+      // Drop old table and recreate with new schema
+      await pool.query('DROP TABLE IF EXISTS email_verifications CASCADE');
+      logger.info('Old table dropped');
+    }
+
+    // Create table with new schema
     await pool.query(`
       CREATE TABLE IF NOT EXISTS email_verifications (
         id SERIAL PRIMARY KEY,
