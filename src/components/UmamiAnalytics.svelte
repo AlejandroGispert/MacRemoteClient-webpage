@@ -1,6 +1,6 @@
 <script>
 	import { onDestroy, onMount } from 'svelte';
-	import { hasAnalyticsConsentGranted } from '../lib/consent';
+	import { hasNecessaryAnalyticsConsent } from '../lib/consent';
 
 	onMount(() => {
 		const loadUmami = () => {
@@ -25,13 +25,13 @@
 			}
 		};
 
-		if (hasAnalyticsConsentGranted()) {
+		if (hasNecessaryAnalyticsConsent()) {
 			schedule();
 			return;
 		}
 
 		const onConsent = (event) => {
-			if (event?.detail?.choice === 'granted') {
+			if (event?.detail?.choice === 'necessary' || event?.detail?.choice === 'all') {
 				schedule();
 			}
 		};

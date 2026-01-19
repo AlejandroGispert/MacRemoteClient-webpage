@@ -1,5 +1,5 @@
 import { firebaseConfig } from './firebase';
-import { hasAnalyticsConsentGranted } from './consent';
+import { hasAnalyticsConsentGranted, hasNecessaryAnalyticsConsent } from './consent';
 
 let app: any = null;
 let analytics: any = null;
@@ -124,7 +124,7 @@ export function trackUmamiEvent(eventName: string, eventData?: Record<string, st
 		return;
 	}
 
-	if (!hasAnalyticsConsentGranted()) {
+	if (!hasNecessaryAnalyticsConsent()) {
 		return;
 	}
 

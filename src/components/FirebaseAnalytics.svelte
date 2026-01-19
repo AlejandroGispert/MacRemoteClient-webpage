@@ -25,7 +25,7 @@
 		}
 
 		const onConsent = (event) => {
-			if (event?.detail?.choice === 'granted') {
+			if (event?.detail?.choice === 'all') {
 				schedule();
 			}
 		};
