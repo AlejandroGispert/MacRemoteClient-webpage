@@ -33,7 +33,11 @@ src/
     └── terms.astro
 
 public/                 # Static assets
-├── appscreen.jpg
+├── screenshots/        # App screenshots
+│   ├── appscreen.jpg
+│   ├── appscreen2.jpg
+│   ├── appscreen3.jpg
+│   └── appscreen4.jpg
 ├── background.png
 ├── favicon.svg
 ├── ic_launcher_round.png
