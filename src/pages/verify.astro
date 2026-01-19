@@ -38,8 +38,31 @@ import Layout from '../layouts/Layout.astro';
 				}
 			} else {
 				// Verify the token
-				verifyEmailToken(token).then((result) => {
+				verifyEmailToken(token).then(async (result) => {
 					if (result.success && statusElement) {
+						// Track download after verification
+						if (result.email) {
+							try {
+								const { trackDownload } = await import('../lib/api');
+								await trackDownload(result.email);
+							} catch (err) {
+								console.error('Error tracking download:', err);
+							}
+						}
+
+						// Download URL
+						const downloadUrl = '/files/MacRCDesktop_v2.0.dmg';
+						
+						// Automatically trigger download
+						const link = document.createElement('a');
+						link.href = downloadUrl;
+						link.download = 'MacRCDesktop_v2.0.dmg';
+						link.target = '_blank';
+						link.rel = 'noopener noreferrer';
+						document.body.appendChild(link);
+						link.click();
+						document.body.removeChild(link);
+
 						statusElement.innerHTML = `
 							<div class="success">
 								<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -47,8 +70,9 @@ import Layout from '../layouts/Layout.astro';
 									<polyline points="22 4 12 14.01 9 11.01"/>
 								</svg>
 								<h2>Email Verified Successfully!</h2>
-								<p>Your email has been verified. You can now download the Mac Remote Controller app.</p>
-								<a href="/#download" class="button">Download Now</a>
+								<p>Your email has been verified and your download has started automatically.</p>
+								<p class="small-text">If the download didn't start, <a href="${downloadUrl}" download="MacRCDesktop_v2.0.dmg" class="download-link">click here to download</a></p>
+								<a href="/" class="button">Go to Homepage</a>
 							</div>
 						`;
 					} else if (statusElement) {
@@ -133,8 +157,24 @@ import Layout from '../layouts/Layout.astro';
 
 	.success p {
 		color: rgba(255, 255, 255, 0.75);
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 		line-height: 1.6;
+	}
+
+	.success .small-text {
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.6);
+		margin-top: 1rem;
+	}
+
+	.success .download-link {
+		color: #667eea;
+		text-decoration: underline;
+		transition: color 0.2s;
+	}
+
+	.success .download-link:hover {
+		color: #764ba2;
 	}
 
 	.error {
