@@ -114,19 +114,22 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 		left: 0;
 		width: 100%;
 		height: 100%;
-		/* Prefer modern formats (WebP) with PNG fallback */
-		background-image: image-set(
-			url('/background_lossless.webp') type('image/webp') 1x,
-			url('/background.png') 1x
-		);
+		/* Default PNG fallback */
+		background-image: url('/background.png');
 		background-position: center center;
 		background-attachment: scroll;
 		background-size: cover;
 		background-repeat: no-repeat;
-
 		z-index: -1;
 		transform: translate3d(0, 0, 0);
 		will-change: transform;
+	}
+
+	/* Modern browsers: Use WebP if supported */
+	@supports (background-image: url('data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=')) {
+		body::before {
+			background-image: url('/background_lossless.webp');
+		}
 	}
 
 	/* Reduce layout/paint cost for below-the-fold sections */

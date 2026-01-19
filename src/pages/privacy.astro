@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="container">
 			<header class="legal-header">
 				<h1>Privacy Policy</h1>
-				<p class="last-updated">Effective Date: December 21, 2025</p>
+				<p class="last-updated">Effective Date: January 1, 2025</p>
 			</header>
 
 			<div class="legal-content">
@@ -32,29 +32,71 @@ import Layout from '../layouts/Layout.astro';
 						<li><strong>No personal information is collected</strong> - We do not access your contacts, photos, files, or any other personal data</li>
 					</ul>
 					
-					<h3>2.1 Website Analytics</h3>
+					<h3>2.1 Email Collection for Download Verification</h3>
 					<p>
-						Our website uses Firebase Analytics (provided by Google) to understand how visitors interact with our website. This service collects anonymous usage statistics such as:
+						To download the Mac Remote Controller Desktop application, we require you to provide your email address for verification purposes. We collect the following information:
+					</p>
+					<ul>
+						<li><strong>Email Address:</strong> Required to send a verification link</li>
+						<li><strong>Verification Status:</strong> Whether your email has been verified</li>
+						<li><strong>Download Count:</strong> Number of times you have downloaded the Mac app</li>
+						<li><strong>Timestamp:</strong> When you requested verification and when verification was completed</li>
+					</ul>
+					<p>
+						This information is stored securely on our backend servers (hosted on Railway) and is used solely to:
+					</p>
+					<ul>
+						<li>Verify your email address before allowing downloads</li>
+						<li>Prevent unauthorized access to downloads</li>
+						<li>Monitor download patterns and ensure security</li>
+					</ul>
+					<p>
+						We do not use your email address for marketing purposes or share it with third parties. Your email is stored only as long as necessary to provide the download service. You can request deletion of your email data by contacting us at the email address provided in the Contact Us section.
+					</p>
+					
+					<h3>2.2 Website Analytics</h3>
+					<p>
+						Our website uses analytics services to understand how visitors interact with our website. These services collect anonymous usage statistics only after you grant consent via our cookie consent banner.
 					</p>
 					<p>
-						Where required by law (e.g., EU/EEA/UK), we ask for your consent before enabling analytics cookies. You can accept or reject via the consent banner.
+						<strong>Necessary Analytics (Umami):</strong> We use Umami, a privacy-focused analytics service that collects minimal, anonymized data. Umami does not use cookies and respects Do Not Track headers. The data collected includes:
+					</p>
+					<ul>
+						<li>Page views (anonymized)</li>
+						<li>Download events (to track successful and blocked download attempts)</li>
+						<li>General device and browser information</li>
+					</ul>
+					<p>
+						<strong>Optional Analytics (Firebase Analytics):</strong> When you choose "Allow All" in our cookie consent banner, we also use Firebase Analytics (provided by Google) which collects:
 					</p>
 					<ul>
 						<li>Page views and navigation patterns</li>
-						<li>Download button clicks (Android app and Mac app)</li>
+						<li>Download button clicks</li>
 						<li>General location data (country/region level, not precise location)</li>
 						<li>Device type and browser information</li>
 					</ul>
 					<p>
-						This data is aggregated and anonymized. It does not identify you personally and is used solely to improve our website and understand user preferences. You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.
+						All analytics data is aggregated and anonymized. It does not identify you personally and is used solely to improve our website and understand user preferences. You can control analytics cookies through our consent banner. You can also opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.
 					</p>
 					
-					<h3>2.2 Local Network Communication</h3>
+					<h3>2.3 Cookie Consent</h3>
+					<p>
+						We use a cookie consent system that allows you to choose between:
+					</p>
+					<ul>
+						<li><strong>Only Necessary:</strong> Only Umami Analytics (privacy-focused, minimal data collection)</li>
+						<li><strong>Allow All:</strong> Both Umami Analytics and Firebase Analytics</li>
+					</ul>
+					<p>
+						Your consent preference is stored locally in your browser and is respected on all pages. You can change your preference at any time by clearing your browser cookies and revisiting our website.
+					</p>
+					
+					<h3>2.4 Local Network Communication</h3>
 					<p>
 						The Mac Remote Controller app operates entirely over your local network. All communication occurs directly between your Android device and your Mac on your local network. We do not collect, store, or transmit any personal data to external servers.
 					</p>
 					
-					<h3>2.3 Device Information</h3>
+					<h3>2.5 Device Information</h3>
 					<p>
 						The application may access device information necessary for establishing local network connections, such as IP addresses and network identifiers. This information is used solely for the purpose of establishing connections between your devices and is not stored or transmitted outside your local network.
 					</p>
@@ -79,17 +121,26 @@ import Layout from '../layouts/Layout.astro';
 						Any information collected is used solely to:
 					</p>
 					<ul>
-						<li>Establish and maintain connections between your Android device and Mac</li>
-						<li>Enable remote control functionality</li>
-						<li>Improve the performance and reliability of the application</li>
-						<li>Understand website usage patterns (website analytics only)</li>
+						<li><strong>Email Addresses:</strong> Verify your identity before allowing Mac app downloads, send verification emails, and track download patterns for security purposes</li>
+						<li><strong>Application Data:</strong> Establish and maintain connections between your Android device and Mac, and enable remote control functionality</li>
+						<li><strong>Analytics Data:</strong> Improve the performance and reliability of the application and understand website usage patterns</li>
+						<li><strong>Device Information:</strong> Enable local network communication and improve app functionality</li>
 					</ul>
+					<p>
+						We do not sell, rent, or share your personal information with third parties for marketing purposes.
+					</p>
 				</section>
 
 				<section>
 					<h2>5. Data Storage</h2>
 					<p>
-						All app data remains on your devices. We do not store any personal information on external servers. Any preferences or settings you configure are stored locally on your devices. Website analytics data is stored by Google Firebase Analytics in accordance with their privacy policy.
+						<strong>Application Data:</strong> All app data remains on your devices. We do not store any personal information on external servers from the mobile or Mac applications. Any preferences or settings you configure are stored locally on your devices.
+					</p>
+					<p>
+						<strong>Email Verification Data:</strong> Email addresses and verification data collected for Mac app downloads are stored securely on our backend servers hosted on Railway. This data is encrypted in transit and at rest. We retain this data only as long as necessary to provide the download verification service. You can request deletion of your email data at any time by contacting us.
+					</p>
+					<p>
+						<strong>Website Analytics Data:</strong> Website analytics data is stored by the respective analytics providers (Umami and Google Firebase Analytics) in accordance with their privacy policies. This data is anonymized and does not include personal identifiers.
 					</p>
 				</section>
 
@@ -99,10 +150,13 @@ import Layout from '../layouts/Layout.astro';
 						The Mac Remote Controller app does <strong>not</strong> use any third-party services, advertising SDKs, or analytics platforms within the mobile or Mac applications.
 					</p>
 					<p>
-						Our website uses the following third-party services:
+						Our website and download verification system use the following third-party services:
 					</p>
 					<ul>
-						<li><strong>Firebase Analytics (Google):</strong> For website usage analytics. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
+						<li><strong>Railway:</strong> Hosts our backend server for email verification and download tracking. Railway stores email verification data securely. See <a href="https://railway.app/legal/privacy" target="_blank" rel="noopener noreferrer">Railway's Privacy Policy</a></li>
+						<li><strong>Umami Analytics:</strong> Privacy-focused analytics service for website usage statistics. Umami does not use cookies and respects Do Not Track. See <a href="https://umami.is/privacy" target="_blank" rel="noopener noreferrer">Umami's Privacy Policy</a></li>
+						<li><strong>Firebase Analytics (Google):</strong> Optional website usage analytics (only when you choose "Allow All"). See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
+						<li><strong>Email Service Provider:</strong> We use SMTP services (e.g., Gmail, SendGrid, or similar) to send verification emails. Email addresses are only used for verification purposes.</li>
 						<li><strong>Google Play Store:</strong> For app distribution. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
 					</ul>
 					<p>
@@ -130,11 +184,16 @@ import Layout from '../layouts/Layout.astro';
 						You have the right to:
 					</p>
 					<ul>
-						<li>Use the app without providing any personal information</li>
+						<li>Use the mobile and Mac applications without providing any personal information (except for email verification required for Mac app downloads)</li>
 						<li>Control all data stored locally on your devices</li>
-						<li>Opt out of website analytics using browser settings or the Google Analytics Opt-out Add-on</li>
+						<li>Control cookie and analytics consent via our consent banner</li>
+						<li>Opt out of website analytics using browser settings, our consent banner, or the Google Analytics Opt-out Add-on</li>
+						<li>Request deletion of your email verification data by contacting us</li>
 						<li>Uninstall the app at any time, which removes all locally stored data</li>
 					</ul>
+					<p>
+						If you wish to have your email verification data deleted, please contact us at the email address provided in the Contact Us section, and we will remove your information from our systems within 30 days.
+					</p>
 				</section>
 
 				<section>
@@ -150,7 +209,7 @@ import Layout from '../layouts/Layout.astro';
 						If you have any questions or concerns about this Privacy Policy, please contact us at:
 					</p>
 					<p>
-						<strong>Email:</strong> <a href="mailto:alejandrobusiness2022@gmail.com">alejandrobusiness2022@gmail.com</a>
+						<strong>Email:</strong> <a href="mailto:macremotecontroller@gmail.com">macremotecontroller@gmail.com</a>
 					</p>
 					<p>
 						<strong>Company:</strong> AG-sound Denmark<br>

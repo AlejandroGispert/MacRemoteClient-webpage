@@ -1,10 +1,13 @@
 <script>
 	import { toastInfo, toastSuccess, toastError } from '../../lib/toast';
-	import { trackDownloadClick, trackDownloadAttempt, trackDownloadBlocked } from '../../lib/analytics';
+	import { trackDownloadAttempt, trackDownloadBlocked } from '../../lib/analytics';
 	import { onMount } from 'svelte';
+	import EmailVerificationModal from '../EmailVerificationModal.svelte';
 	
 	let { url = '#', size = 'large' } = $props();
 	let isMac = false;
+	let showEmailModal = $state(false);
+	let downloadLink = $state(null);
 	
 	const sizeClasses = {
 		large: 'px-8 py-4 text-lg',
@@ -33,35 +36,48 @@
 	});
 	
 	function handleClick(event) {
+		event.preventDefault();
+
 		if (url === '#' || url === '') {
-			event.preventDefault();
 			toastInfo('Coming Soon', {
 				description: 'The Mac companion app will be available for download soon!',
 				duration: 4000,
 			});
-			// Track blocked download attempt (coming soon)
 			trackDownloadAttempt('mac', false, 'coming_soon');
 			return;
 		}
 		
 		// Check if user is on Mac
 		if (!isMac) {
-			event.preventDefault();
 			toastError('Windows Not Supported', {
 				description: 'We currently don\'t support Windows. This app is only available for macOS.',
 				duration: 5000,
 			});
-			// Track blocked download attempt for monitoring
 			trackDownloadAttempt('mac', false, 'not_mac');
 			trackDownloadBlocked('mac', 'not_mac');
 			return;
 		}
 		
-		// Track successful download click (Firebase + Umami)
-		trackDownloadClick('mac');
-		trackDownloadAttempt('mac', true);
-		
-		// Show success toast when download starts
+		// Show email verification modal
+		showEmailModal = true;
+	}
+
+	function handleEmailVerified(email) {
+		// Trigger download
+		if (downloadLink) {
+			downloadLink.click();
+		} else if (url !== '#' && url !== '') {
+			// Fallback: create temporary link and click
+			const link = document.createElement('a');
+			link.href = url;
+			link.download = 'MacRCDesktop_v2.0.dmg';
+			link.target = '_blank';
+			link.rel = 'noopener noreferrer';
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		}
+
 		toastSuccess('Download Started', {
 			description: 'Your Mac app download has begun. Check your Downloads folder.',
 			duration: 4000,
@@ -69,11 +85,8 @@
 	}
 </script>
 
-<a 
-	href={url} 
-	download={url !== '#' && url !== '' ? 'MacRCDesktop_v2.0.dmg' : undefined}
-	target={url !== '#' && url !== '' ? '_blank' : undefined}
-	rel={url !== '#' && url !== '' ? 'noopener noreferrer' : undefined}
+<button 
+	type="button"
 	class="mac-download-button {size === 'large' ? 'large' : size === 'medium' ? 'medium' : 'small'}"
 	aria-label="Download Mac Remote Controller Desktop app"
 	onclick={handleClick}
@@ -85,7 +98,23 @@
 		<span class="download-label">Download</span>
 		<span class="download-platform">Mac Desktop</span>
 	</div>
-</a>
+</button>
+
+<!-- Hidden download link (triggered after email verification) -->
+{#if url !== '#' && url !== ''}
+	<a 
+		bind:this={downloadLink}
+		href={url} 
+		download="MacRCDesktop_v2.0.dmg"
+		target="_blank"
+		rel="noopener noreferrer"
+		style="display: none;"
+		aria-hidden="true"
+	></a>
+{/if}
+
+<!-- Email Verification Modal -->
+<EmailVerificationModal bind:isOpen={showEmailModal} onVerified={handleEmailVerified} />
 
 <style>
 	.mac-download-button {
@@ -103,6 +132,7 @@
 		cursor: pointer;
 		position: relative;
 		overflow: hidden;
+		font-family: inherit;
 	}
 	
 	.mac-download-button::before {
