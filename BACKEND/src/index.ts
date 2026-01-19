@@ -4,7 +4,7 @@ import express from "express";
 import { initializeDatabase } from "./config/database";
 import { corsMiddleware } from "./middleware/cors";
 import { requestLogger, errorHandler } from "./middleware/errorHandler";
-import verificationRoutes from "./routes/verification";
+import downloadRoutes from "./routes/download";
 import healthRoutes from "./routes/health";
 import { logger } from "./utils/logger";
 
@@ -25,7 +25,7 @@ initializeDatabase().catch((error) => {
 });
 
 // Routes
-app.use("/api", verificationRoutes);
+app.use("/api", downloadRoutes);
 app.use("/", healthRoutes);
 
 // Global error handler (must be last)

@@ -13,27 +13,27 @@ export interface CheckVerificationResponse {
 }
 
 /**
- * Request email verification
+ * Register email and return download info
  */
-export async function requestEmailVerification(email: string): Promise<VerificationResponse> {
+export async function registerEmail(email: string, filename: string): Promise<VerificationResponse> {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/verify-email`, {
+    const response = await fetch(`${API_BASE_URL}/api/register-email`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({ email, filename }),
     });
 
     if (!response.ok) {
       const error = await response.json();
-      return { success: false, error: error.error || 'Failed to send verification email' };
+      return { success: false, error: error.error || 'Failed to register email' };
     }
 
     const data = await response.json();
     return { success: true, message: data.message };
   } catch (error) {
-    console.error('Error requesting email verification:', error);
+    console.error('Error registering email:', error);
     return { success: false, error: 'Network error. Please try again.' };
   }
 }

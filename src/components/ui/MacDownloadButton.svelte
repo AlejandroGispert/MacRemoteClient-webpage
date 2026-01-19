@@ -3,11 +3,14 @@
 	import { trackDownloadAttempt, trackDownloadBlocked } from '../../lib/analytics';
 	import { onMount } from 'svelte';
 	import EmailVerificationModal from '../EmailVerificationModal.svelte';
+	import VersionSelector from '../VersionSelector.svelte';
 	
 	let { url = '#', size = 'large' } = $props();
 	let isMac = false;
 	let showEmailModal = $state(false);
+	let showVersionSelector = $state(false);
 	let downloadLink = $state(null);
+	let selectedVersion = $state({ version: '2.0', filename: 'MacRCDesktop_v2.0.dmg', label: 'v2.0 (Latest)' });
 	
 	const sizeClasses = {
 		large: 'px-8 py-4 text-lg',
@@ -58,30 +61,31 @@
 			return;
 		}
 		
-		// Show email verification modal
+		// Show version selector first, then email verification
+		showVersionSelector = true;
+	}
+
+	function handleVersionSelected(version) {
+		selectedVersion = version;
+		showVersionSelector = false;
+		// Show email modal after version selection
 		showEmailModal = true;
 	}
 
 	function handleEmailVerified(email) {
+		// Download the selected version
+		const downloadUrl = `/files/${selectedVersion.filename}`;
+		const downloadFilename = selectedVersion.filename;
+		
 		// Trigger download
-		if (downloadLink) {
-			downloadLink.click();
-		} else if (url !== '#' && url !== '') {
-			// Fallback: create temporary link and click
-			const link = document.createElement('a');
-			link.href = url;
-			link.download = 'MacRCDesktop_v2.0.dmg';
-			link.target = '_blank';
-			link.rel = 'noopener noreferrer';
-			document.body.appendChild(link);
-			link.click();
-			document.body.removeChild(link);
-		}
-
-		toastSuccess('Download Started', {
-			description: 'Your Mac app download has begun. Check your Downloads folder.',
-			duration: 4000,
-		});
+		const link = document.createElement('a');
+		link.href = downloadUrl;
+		link.download = downloadFilename;
+		link.target = '_blank';
+		link.rel = 'noopener noreferrer';
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
 	}
 </script>
 
@@ -113,8 +117,15 @@
 	></a>
 {/if}
 
-<!-- Email Verification Modal -->
-<EmailVerificationModal bind:isOpen={showEmailModal} onVerified={handleEmailVerified} />
+<!-- Version Selector Modal -->
+<VersionSelector bind:isOpen={showVersionSelector} onVersionSelect={handleVersionSelected} />
+
+<!-- Email Modal -->
+<EmailVerificationModal 
+	bind:isOpen={showEmailModal} 
+	onVerified={handleEmailVerified}
+	selectedVersion={selectedVersion}
+/>
 
 <style>
 	.mac-download-button {

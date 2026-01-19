@@ -29,14 +29,21 @@ export async function initializeDatabase() {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS email_verifications (
         id SERIAL PRIMARY KEY,
-        email VARCHAR(255) UNIQUE NOT NULL,
-        verification_token VARCHAR(255) UNIQUE NOT NULL,
-        verified BOOLEAN DEFAULT FALSE,
+        email VARCHAR(255) NOT NULL,
+        version VARCHAR(50),
+        filename VARCHAR(255),
         download_count INTEGER DEFAULT 0,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        verified_at TIMESTAMP
+        last_download_at TIMESTAMP
       )
     `);
+    
+    // Create index for faster lookups
+    await pool.query(`
+      CREATE INDEX IF NOT EXISTS idx_email_verifications_email 
+      ON email_verifications(email)
+    `);
+    
     logger.info('Database initialized successfully');
   } catch (error) {
     logger.error('Database initialization error', error);

@@ -1,12 +1,11 @@
 <script>
-	import { toastError, toastSuccess, toastInfo } from '../lib/toast';
-	import { requestEmailVerification, checkEmailVerification, trackDownload } from '../lib/api';
+	import { toastError, toastSuccess } from '../lib/toast';
+	import { registerEmail } from '../lib/api';
 	import { trackDownloadClick, trackDownloadAttempt } from '../lib/analytics';
 
-	let { isOpen = $bindable(), onVerified } = $props();
+	let { isOpen = $bindable(), onVerified, selectedVersion } = $props();
 	let email = $state('');
 	let isLoading = $state(false);
-	let emailSent = $state(false);
 	let errorMessage = $state('');
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,26 +26,30 @@
 		isLoading = true;
 
 		try {
-			// Check if email is already verified
-			const isVerified = await checkEmailVerification(email);
-
-			if (isVerified) {
-				// Already verified, proceed to download
-				await handleVerified(email);
-				return;
-			}
-
-			// Send verification email
-			const result = await requestEmailVerification(email);
+			// Register email in database and download
+			const result = await registerEmail(email, selectedVersion?.filename || 'MacRCDesktop_v2.0.dmg');
 
 			if (result.success) {
-				emailSent = true;
-				toastSuccess('Verification Email Sent', {
-					description: `Check your inbox at ${email} and click the verification link.`,
-					duration: 5000,
+				// Track download
+				trackDownloadClick('mac');
+				trackDownloadAttempt('mac', true);
+
+				// Trigger download
+				if (onVerified) {
+					onVerified(email);
+				}
+
+				// Close modal
+				isOpen = false;
+				email = '';
+				errorMessage = '';
+
+				toastSuccess('Download Started', {
+					description: `Downloading ${selectedVersion?.label || 'v2.0'}...`,
+					duration: 3000,
 				});
 			} else {
-				errorMessage = result.error || 'Failed to send verification email';
+				errorMessage = result.error || 'Failed to register email';
 				toastError('Error', {
 					description: errorMessage,
 					duration: 4000,
@@ -63,32 +66,8 @@
 		}
 	}
 
-	async function handleVerified(verifiedEmail) {
-		// Track download
-		trackDownloadClick('mac');
-		trackDownloadAttempt('mac', true);
-		await trackDownload(verifiedEmail);
-
-		// Call callback
-		if (onVerified) {
-			onVerified(verifiedEmail);
-		}
-
-		// Close modal
-		isOpen = false;
-		emailSent = false;
-		email = '';
-		errorMessage = '';
-
-		toastSuccess('Download Ready', {
-			description: 'Starting download...',
-			duration: 2000,
-		});
-	}
-
 	function handleClose() {
 		isOpen = false;
-		emailSent = false;
 		email = '';
 		errorMessage = '';
 	}
@@ -104,7 +83,7 @@
 		if (event.key === 'Escape') {
 			handleClose();
 		}
-		if (event.key === 'Enter' && !emailSent && !isLoading) {
+		if (event.key === 'Enter' && !isLoading) {
 			handleSubmit();
 		}
 		// Handle Enter/Space on overlay to close
@@ -132,66 +111,41 @@
 			</button>
 
 			<div class="modal-body">
-				<h2 id="modal-title" class="modal-title">Verify Your Email</h2>
+				<h2 id="modal-title" class="modal-title">Enter Your Email</h2>
+				<p class="modal-description">
+					Enter your email address to download {selectedVersion?.label || 'v2.0'}.
+				</p>
 
-				{#if !emailSent}
-					<p class="modal-description">
-						Enter your email address to receive a verification link and download the Mac Remote Controller app.
-					</p>
-
-					<form onsubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-						<div class="input-group">
-							<label for="email-input" class="sr-only">Email address</label>
-							<input
-								id="email-input"
-								type="email"
-								placeholder="your.email@example.com"
-								bind:value={email}
-								disabled={isLoading}
-								class="email-input"
-								autocomplete="email"
-								required
-							/>
-							{#if errorMessage}
-								<p class="error-message">{errorMessage}</p>
-							{/if}
-						</div>
-
-						<button 
-							type="submit" 
-							class="submit-button"
+				<form onsubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+					<div class="input-group">
+						<label for="email-input" class="sr-only">Email address</label>
+						<input
+							id="email-input"
+							type="email"
+							placeholder="your.email@example.com"
+							bind:value={email}
 							disabled={isLoading}
-						>
-							{#if isLoading}
-								Sending...
-							{:else}
-								Send Verification Email
-							{/if}
-						</button>
-					</form>
-				{:else}
-					<div class="email-sent">
-						<svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<path d="M20 6L9 17l-5-5" />
-						</svg>
-						<p class="modal-description">
-							Verification email sent to <strong>{email}</strong>
-						</p>
-						<p class="modal-description">
-							Please check your inbox and click the verification link. Once verified, you can download the app.
-						</p>
-						<p class="modal-description small">
-							Didn't receive the email? Check your spam folder or try again.
-						</p>
-						<button 
-							class="resend-button"
-							onclick={() => { emailSent = false; errorMessage = ''; }}
-							disabled={isLoading}
-						>
-							Try Different Email
-						</button>
+							class="email-input"
+							autocomplete="email"
+							required
+						/>
+						{#if errorMessage}
+							<p class="error-message">{errorMessage}</p>
+						{/if}
 					</div>
-				{/if}
+
+					<button 
+						type="submit" 
+						class="submit-button"
+						disabled={isLoading}
+					>
+						{#if isLoading}
+							Downloading...
+						{:else}
+							Download {selectedVersion?.label || 'v2.0'}
+						{/if}
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -322,8 +276,7 @@
 		margin-top: 0.5rem;
 	}
 
-	.submit-button,
-	.resend-button {
+	.submit-button {
 		width: 100%;
 		padding: 0.75rem 1.5rem;
 		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -336,27 +289,14 @@
 		transition: all 0.2s;
 	}
 
-	.submit-button:hover:not(:disabled),
-	.resend-button:hover:not(:disabled) {
+	.submit-button:hover:not(:disabled) {
 		transform: translateY(-1px);
 		box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 	}
 
-	.submit-button:disabled,
-	.resend-button:disabled {
+	.submit-button:disabled {
 		opacity: 0.6;
 		cursor: not-allowed;
-	}
-
-	.email-sent {
-		text-align: center;
-	}
-
-	.check-icon {
-		width: 4rem;
-		height: 4rem;
-		color: #10b981;
-		margin: 0 auto 1.5rem;
 	}
 
 	.sr-only {
