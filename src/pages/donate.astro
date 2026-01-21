@@ -1,0 +1,334 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Stripe Payment Link from environment variable
+// Set PUBLIC_STRIPE_PAYMENT_LINK in your .env file or Netlify environment variables
+// Get your payment link from: https://dashboard.stripe.com/payment-links
+const STRIPE_PAYMENT_LINK = 'https://donate.stripe.com/aFa00c4xN3by2FPbCA0VO00';
+---
+
+<Layout title="Support Mac Remote Controller - Donate">
+	<article class="donate-page">
+		<div class="container">
+			<header class="donate-header">
+				<h1>Support Mac Remote Controller</h1>
+				<p class="donate-subtitle">
+					Your support helps us continue developing and improving Mac Remote Controller. 
+					Every contribution, no matter the size, makes a difference.
+				</p>
+			</header>
+
+			<div class="donate-content">
+				<section class="donate-section">
+					<h2>Why Support Us?</h2>
+					<div class="reasons-grid">
+						<div class="reason-card">
+							<div class="reason-icon">🚀</div>
+							<h3>Continuous Development</h3>
+							<p>Help us add new features, improve performance, and fix bugs faster.</p>
+						</div>
+						<div class="reason-card">
+							<div class="reason-icon">🔒</div>
+							<h3>Security & Privacy</h3>
+							<p>Maintain our commitment to keeping your data secure and private.</p>
+						</div>
+						<div class="reason-card">
+							<div class="reason-icon">💡</div>
+							<h3>Innovation</h3>
+							<p>Enable us to explore new ideas and integrations that make your experience better.</p>
+						</div>
+						<div class="reason-card">
+							<div class="reason-icon">🌍</div>
+							<h3>Free for Everyone</h3>
+							<p>Keep the core app free while supporting future development.</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="donate-section payment-section">
+					<h2>Make a Donation</h2>
+					<p class="payment-description">
+						Choose an amount below or enter a custom amount. All payments are securely processed through Stripe.
+					</p>
+					
+					<div class="stripe-container">
+						<!-- Stripe Payment Link Button -->
+						<a 
+							href={STRIPE_PAYMENT_LINK}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="stripe-button"
+						>
+							<svg class="stripe-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.584 2.314l2.343-3.514C19.56 2.81 16.453 1.5 12.853 1.5c-3.74 0-6.709 2.142-6.709 5.3 0 3.28 3.404 4.459 6.709 5.3 2.172.806 3.356 1.426 3.356 2.409 0 .98-.84 1.545-2.183 1.545-1.865 0-4.577-.921-6.99-2.833l-2.343 3.514C4.94 21.19 8.647 22.5 12.853 22.5c3.74 0 6.709-2.142 6.709-5.3 0-3.28-3.404-4.459-6.709-5.3h.123z" fill="#635BFF"/>
+							</svg>
+							<span>Donate with Stripe</span>
+						</a>
+					</div>
+
+					<div class="payment-info">
+						<p class="info-text">
+							<strong>Secure Payment:</strong> Powered by Stripe. Your payment information is encrypted and secure.
+						</p>
+						<p class="info-text">
+							<strong>One-time donation:</strong> No recurring charges. You're in complete control.
+						</p>
+					</div>
+				</section>
+
+				<section class="donate-section">
+					<h2>Other Ways to Support</h2>
+					<div class="other-ways">
+						<div class="way-item">
+							<h3>⭐ Rate & Review</h3>
+							<p>
+								Leave a positive review on the 
+								<a href="https://play.google.com/store/apps/details?id=com.gispert.macremotecontrollerandroid" target="_blank" rel="noopener noreferrer">Google Play Store</a>. 
+								It helps others discover the app!
+							</p>
+						</div>
+						<div class="way-item">
+							<h3>📢 Share with Friends</h3>
+							<p>
+								Tell your friends and colleagues about Mac Remote Controller. 
+								Word of mouth is incredibly valuable to us.
+							</p>
+						</div>
+						<div class="way-item">
+							<h3>🐛 Report Issues</h3>
+							<p>
+								Found a bug or have a feature request? 
+								Help us improve by reporting issues or suggesting improvements.
+							</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</article>
+</Layout>
+
+<style>
+	.donate-page {
+		padding: 4rem 2rem;
+		min-height: 80vh;
+	}
+
+	.container {
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.donate-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	.donate-header h1 {
+		font-size: clamp(2rem, 5vw, 3rem);
+		font-weight: 700;
+		margin-bottom: 1rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.donate-subtitle {
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1.6;
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	.donate-content {
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
+	}
+
+	.donate-section h2 {
+		font-size: 2rem;
+		font-weight: 600;
+		margin-bottom: 2rem;
+		color: white;
+		text-align: center;
+	}
+
+	.reasons-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+
+	@media (min-width: 768px) {
+		.reasons-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	.reason-card {
+		background: rgba(102, 126, 234, 0.1);
+		border: 1px solid rgba(102, 126, 234, 0.3);
+		border-radius: 1rem;
+		padding: 2rem;
+		text-align: center;
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+
+	.reason-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+	}
+
+	.reason-icon {
+		font-size: 3rem;
+		margin-bottom: 1rem;
+	}
+
+	.reason-card h3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-bottom: 0.75rem;
+		color: white;
+	}
+
+	.reason-card p {
+		color: rgba(255, 255, 255, 0.7);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.payment-section {
+		background: rgba(15, 15, 35, 0.5);
+		border-radius: 1.5rem;
+		padding: 3rem 2rem;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.payment-description {
+		text-align: center;
+		color: rgba(255, 255, 255, 0.8);
+		margin-bottom: 2rem;
+		font-size: 1.125rem;
+	}
+
+	.stripe-container {
+		display: flex;
+		justify-content: center;
+		margin: 2rem 0;
+	}
+
+	.stripe-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		padding: 1rem 2.5rem;
+		border-radius: 0.75rem;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 1.125rem;
+		transition: transform 0.2s, box-shadow 0.2s;
+		box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+	}
+
+	.stripe-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+	}
+
+	.stripe-button:active {
+		transform: translateY(0);
+	}
+
+	.stripe-icon {
+		width: 24px;
+		height: 24px;
+	}
+
+	.payment-info {
+		margin-top: 2rem;
+		padding-top: 2rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.info-text {
+		color: rgba(255, 255, 255, 0.7);
+		text-align: center;
+		margin: 0;
+		font-size: 0.9375rem;
+	}
+
+	.info-text strong {
+		color: white;
+	}
+
+	.other-ways {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+
+	.way-item {
+		background: rgba(255, 255, 255, 0.05);
+		border-radius: 1rem;
+		padding: 2rem;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.way-item h3 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-bottom: 0.75rem;
+		color: white;
+	}
+
+	.way-item p {
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.way-item a {
+		color: #667eea;
+		text-decoration: none;
+		font-weight: 500;
+		transition: color 0.2s;
+	}
+
+	.way-item a:hover {
+		color: #764ba2;
+		text-decoration: underline;
+	}
+
+	@media (max-width: 768px) {
+		.donate-page {
+			padding: 2rem 1rem;
+		}
+
+		.donate-header {
+			margin-bottom: 3rem;
+		}
+
+		.donate-content {
+			gap: 3rem;
+		}
+
+		.payment-section {
+			padding: 2rem 1.5rem;
+		}
+
+		.stripe-button {
+			padding: 0.875rem 2rem;
+			font-size: 1rem;
+		}
+	}
+</style>

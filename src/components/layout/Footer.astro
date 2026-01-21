@@ -15,6 +15,12 @@
 					</ul>
 				</div>
 				<div class="footer-section">
+					<h3 class="footer-title">Support</h3>
+					<ul class="footer-link-list">
+						<li><a href="/donate">Donate</a></li>
+					</ul>
+				</div>
+				<div class="footer-section">
 					<h3 class="footer-title">Legal</h3>
 					<ul class="footer-link-list">
 						<li><a href="/privacy">Privacy Policy</a></li>
@@ -85,8 +91,14 @@
 
 	.footer-links {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		gap: 2rem;
+	}
+
+	@media (max-width: 768px) {
+		.footer-links {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 
 	.footer-section {
