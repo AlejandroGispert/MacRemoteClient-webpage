@@ -5,7 +5,9 @@ import StepCard from './StepCard.astro';
 <section id="how-it-works" class="section">
 	<div class="container">
 		<h2 class="section-title">Getting started</h2>
-		<div class="how-it-works-content">
+		<div class="how-it-works-content" itemscope itemtype="https://schema.org/HowTo">
+			<meta itemprop="name" content="How to Set Up Mac Remote Controller" />
+			<meta itemprop="description" content="Step-by-step guide to connect your Android phone to your Mac using Mac Remote Controller" />
 			<StepCard 
 				number={1}
 				title="Connect to Same Network"
@@ -29,6 +31,71 @@ import StepCard from './StepCard.astro';
 		</div>
 	</div>
 </section>
+
+<!-- HowTo Structured Data for Generative Engines -->
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "HowTo",
+	"name": "How to Set Up Mac Remote Controller",
+	"description": "Step-by-step guide to connect your Android phone to your Mac using Mac Remote Controller for remote control",
+	"totalTime": "PT5M",
+	"tool": [
+		{
+			"@type": "HowToTool",
+			"name": "Android phone"
+		},
+		{
+			"@type": "HowToTool",
+			"name": "Mac computer"
+		},
+		{
+			"@type": "HowToTool",
+			"name": "Wi-Fi network or mobile hotspot"
+		}
+	],
+	"step": [
+		{
+			"@type": "HowToStep",
+			"position": 1,
+			"name": "Connect to Same Network",
+			"text": "Make sure both your Mac and mobile device are connected to the same local network or use your mobile hotspot. This ensures both devices can communicate with each other.",
+			"itemListElement": {
+				"@type": "HowToDirection",
+				"text": "Connect both devices to the same Wi-Fi network, or enable mobile hotspot on your phone and connect your Mac to it."
+			}
+		},
+		{
+			"@type": "HowToStep",
+			"position": 2,
+			"name": "Install the Mac Companion App",
+			"text": "Download and install the MacController Desktop application on your Mac using the download button on the website. This companion app is required for the remote control functionality.",
+			"itemListElement": {
+				"@type": "HowToDirection",
+				"text": "Click the Mac download button, open the downloaded DMG file, and drag the MacController app to your Applications folder."
+			}
+		},
+		{
+			"@type": "HowToStep",
+			"position": 3,
+			"name": "Press Pair and Show QR Code",
+			"text": "Open the MacController Desktop app on your Mac and click the Pair button. A QR code will be displayed on your Mac screen for device pairing.",
+			"itemListElement": {
+				"@type": "HowToDirection",
+				"text": "Launch the MacController app, locate and click the 'Pair' button, and wait for the QR code to appear on your screen."
+			}
+		},
+		{
+			"@type": "HowToStep",
+			"position": 4,
+			"name": "Tap Connect on Your Phone",
+			"text": "Open the Mac Remote Controller app on your Android device, tap the Connect button, and scan the QR code displayed in the Mac desktop app with your phone's camera to complete the pairing process.",
+			"itemListElement": {
+				"@type": "HowToDirection",
+				"text": "Open the Mac Remote Controller app on your Android phone, tap 'Connect', point your camera at the QR code on your Mac screen, and wait for the connection to be established."
+			}
+		}
+	]
+})} />
 
 <style>
 	.section {

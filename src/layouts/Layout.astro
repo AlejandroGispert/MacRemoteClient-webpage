@@ -12,7 +12,7 @@ interface Props {
 	image?: string;
 }
 
-const { title, description = "Control your Mac from your phone with Mac Remote Controller. Download the Android app and enjoy seamless remote control of your Mac computer.", image = "/macremoteapp.png" } = Astro.props;
+const { title, description = "Mac Remote Controller is a free app that lets you manage your Mac computer remotely from your android phone. Features include media control, file triggering, app integration with Spotify, browsers, and Microsoft Teams, plus secure encrypted authentication. Works over Wi-Fi or mobile hotspot. Download now for Android.", image = "/macremoteapp.png" } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://macremotecontrollerwebpage.netlify.app/').href;
 const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwebpage.netlify.app/').href;
@@ -24,6 +24,9 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="keywords" content="Mac remote control, Android remote control, Mac controller app, remote Mac access, Mac phone control, Android Mac integration, remote desktop Android, Mac media control, Mac file management, Mac remote app" />
+		<meta name="author" content="Mac Remote Controller" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 		
 		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalURL} />
@@ -56,23 +59,71 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		
-		<!-- Structured Data (JSON-LD) -->
+		<!-- Structured Data (JSON-LD) - Enhanced for Generative Engine Optimization -->
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
-			"@type": "SoftwareApplication",
-			"name": "Mac Remote Controller",
-			"applicationCategory": "UtilityApplication",
-			"operatingSystem": "Android",
-			"offers": {
-				"@type": "Offer",
-				"price": "0",
-				"priceCurrency": "DKK"
-			},
-			"aggregateRating": {
-				"@type": "AggregateRating",
-				"ratingValue": "4.5"
-			},
-			"description": description
+			"@graph": [
+				{
+					"@type": "SoftwareApplication",
+					"name": "Mac Remote Controller",
+					"applicationCategory": "UtilityApplication",
+					"operatingSystem": ["Android", "macOS"],
+					"offers": {
+						"@type": "Offer",
+						"price": "0",
+						"priceCurrency": "DKK",
+						"availability": "https://schema.org/InStock"
+					},
+					"aggregateRating": {
+						"@type": "AggregateRating",
+						"ratingValue": "4.5",
+						"ratingCount": "100"
+					},
+					"description": description,
+					"featureList": [
+						"Smart App Following - Interface adapts to active Mac applications",
+						"Flexible Connectivity - Works over Wi-Fi or mobile hotspot",
+						"File & Workspace Management - Organize folders and batch operations",
+						"Application Integration - Deep integration with Spotify, Chrome, Safari, Firefox, Microsoft Teams",
+						"Complete System Control - Media playback, volume, brightness, window management",
+						"Enterprise Security - Encrypted authentication and secure local network communication"
+					],
+					"screenshot": [
+						"https://macremotecontrollerwebpage.netlify.app/screenshots/appscreen.jpg",
+						"https://macremotecontrollerwebpage.netlify.app/screenshots/appscreen2.jpg",
+						"https://macremotecontrollerwebpage.netlify.app/screenshots/appscreen3.jpg",
+						"https://macremotecontrollerwebpage.netlify.app/screenshots/appscreen4.jpg"
+					],
+					"downloadUrl": "https://play.google.com/store/apps/details?id=com.gispert.macremotecontrollerandroid",
+					"softwareVersion": "2.0",
+					"datePublished": "2024-01-01",
+					"author": {
+						"@type": "Organization",
+						"name": "Mac Remote Controller"
+					}
+				},
+				{
+					"@type": "Organization",
+					"name": "Mac Remote Controller",
+					"url": "https://macremotecontrollerwebpage.netlify.app",
+					"logo": "https://macremotecontrollerwebpage.netlify.app/macremoteapp.png",
+					"sameAs": [
+						"https://play.google.com/store/apps/details?id=com.gispert.macremotecontrollerandroid"
+					]
+				},
+				{
+					"@type": "WebSite",
+					"name": "Mac Remote Controller",
+					"url": "https://macremotecontrollerwebpage.netlify.app",
+					"description": description,
+					"inLanguage": "en",
+					"potentialAction": {
+						"@type": "SearchAction",
+						"target": "https://macremotecontrollerwebpage.netlify.app/?q={search_term_string}",
+						"query-input": "required name=search_term_string"
+					}
+				}
+			]
 		})} />
 	</head>
 	<body class="min-h-full">
