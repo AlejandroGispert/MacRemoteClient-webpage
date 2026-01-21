@@ -131,6 +131,27 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 		<!-- Skip to main content link for keyboard navigation -->
 		<a href="#main-content" class="skip-link">Skip to main content</a>
 		
+		<!-- Ensure page starts at top, especially on mobile -->
+		<script is:inline>
+			// Prevent scroll restoration and ensure page starts at top
+			if ('scrollRestoration' in history) {
+				history.scrollRestoration = 'manual';
+			}
+			// Scroll to top on page load
+			(function() {
+				function scrollToTop() {
+					window.scrollTo(0, 0);
+				}
+				// Scroll immediately if page is already loaded
+				if (document.readyState === 'complete') {
+					scrollToTop();
+				} else {
+					window.addEventListener('load', scrollToTop);
+					document.addEventListener('DOMContentLoaded', scrollToTop);
+				}
+			})();
+		</script>
+		
 		<Navbar client:load />
 		<main id="main-content">
 			<slot />

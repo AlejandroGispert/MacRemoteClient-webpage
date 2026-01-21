@@ -24,19 +24,35 @@
 	function toggleDropdown() {
 		dropdownOpen = !dropdownOpen;
 	}
+	
+	function handleHomeClick(event) {
+		// Check if we're already on the home page
+		if (typeof window !== 'undefined' && window.location.pathname === '/') {
+			event.preventDefault();
+			closeMobileMenu();
+			// Smooth scroll to top
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
+		} else {
+			// If on a different page, let the link navigate normally
+			closeMobileMenu();
+		}
+	}
 </script>
 
 <nav class="navbar" role="navigation" aria-label="Main navigation">
 	<div class="nav-container">
 		<!-- Logo/Brand -->
-		<a href="/" class="brand" aria-label="Mac Remote Controller - Home">
+		<a href="/" class="brand" aria-label="Mac Remote Controller - Home" onclick={handleHomeClick}>
 			<img src="/ic_launcher_round.png" alt="" class="logo" aria-hidden="true" />
 			<span class="brand-text">Mac Remote Controller</span>
 		</a>
 		
 		<!-- Desktop Navigation -->
 		<ul class="nav-links" role="menubar">
-			<li role="none"><a href="/" class="nav-link" role="menuitem">Home</a></li>
+			<li role="none"><a href="/" class="nav-link" role="menuitem" onclick={handleHomeClick}>Home</a></li>
 			<li role="none"><a href="#features" class="nav-link" role="menuitem">Features</a></li>
 			<li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
 			<li role="none"><a href="#download" class="nav-link" role="menuitem">Download</a></li>
@@ -58,8 +74,8 @@
 					aria-label="Legal submenu"
 					aria-hidden={!dropdownOpen}
 				>
-					<li role="none"><a href="/privacy" class="dropdown-link" role="menuitem">Privacy Policy</a></li>
-					<li role="none"><a href="/terms" class="dropdown-link" role="menuitem">Terms of Service</a></li>
+					<li role="none"><a href="/privacy" class="dropdown-link" role="menuitem" tabindex={dropdownOpen ? 0 : -1}>Privacy Policy</a></li>
+					<li role="none"><a href="/terms" class="dropdown-link" role="menuitem" tabindex={dropdownOpen ? 0 : -1}>Terms of Service</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -88,12 +104,12 @@
 		aria-label="Mobile navigation menu"
 	>
 		<ul class="mobile-nav-links" role="none">
-			<li role="none"><a href="/" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Home</a></li>
-			<li role="none"><a href="#features" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Features</a></li>
-			<li role="none"><a href="#about" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">About</a></li>
-			<li role="none"><a href="#download" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Download</a></li>
-			<li role="none"><a href="/privacy" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Privacy Policy</a></li>
-			<li role="none"><a href="/terms" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem">Terms of Service</a></li>
+			<li role="none"><a href="/" class="mobile-nav-link" onclick={handleHomeClick} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Home</a></li>
+			<li role="none"><a href="#features" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Features</a></li>
+			<li role="none"><a href="#about" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>About</a></li>
+			<li role="none"><a href="#download" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Download</a></li>
+			<li role="none"><a href="/privacy" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Privacy Policy</a></li>
+			<li role="none"><a href="/terms" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Terms of Service</a></li>
 		</ul>
 	</div>
 </nav>

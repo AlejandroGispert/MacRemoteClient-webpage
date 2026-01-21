@@ -10,7 +10,9 @@ export default defineConfig({
 
   // Performance optimizations
   build: {
-    inlineStylesheets: "auto",
+    // Inline all stylesheets to eliminate render-blocking CSS requests
+    // This improves LCP and FCP by removing network requests for CSS
+    inlineStylesheets: "always",
   },
 
   vite: {
