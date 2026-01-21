@@ -13,7 +13,7 @@ interface Props {
 	image?: string;
 }
 
-const { title, description = "Mac Remote Controller is a free app that lets you manage your Mac computer remotely from your android phone. Features include media control, file triggering, app integration with Spotify, browsers, and Microsoft Teams, plus secure encrypted authentication. Works over Wi-Fi or mobile hotspot. Download now for Android.", image = "/macremoteapp.png" } = Astro.props;
+const { title, description = "Mac Remote Controller is a free app that lets you manage your Mac computer remotely from your android phone. Features include media control, file triggering, app integration with applications you have installed, plus secure encrypted authentication. Works over Wi-Fi or mobile hotspot. Download now for Android.", image = "/macremoteapp.png" } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://macremotecontrollerwebpage.netlify.app/').href;
 const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwebpage.netlify.app/').href;
@@ -85,7 +85,7 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 						"Smart App Following - Interface adapts to active Mac applications",
 						"Flexible Connectivity - Works over Wi-Fi or mobile hotspot",
 						"File & Workspace Management - Organize folders and batch operations",
-						"Application Integration - Deep integration with Spotify, Chrome, Safari, Firefox, Microsoft Teams",
+						"Application Integration - Interacts with the applications you have installed on your Mac",
 						"Complete System Control - Media playback, volume, brightness, window management",
 						"Enterprise Security - Encrypted authentication and secure local network communication"
 					],
