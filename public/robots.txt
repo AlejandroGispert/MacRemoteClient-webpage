@@ -3,6 +3,9 @@
 User-agent: *
 Allow: /
 
+# Sitemap
+Sitemap: https://macremotecontrollerwebpage.netlify.app/sitemap.xml
+
 # Disallow admin or private areas if any
 # Disallow: /admin/
 # Disallow: /private/

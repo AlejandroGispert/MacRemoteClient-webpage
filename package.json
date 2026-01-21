@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/AlejandroGispert/MacRemoteClient-webpage#readme",
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
     "@astrojs/svelte": "^7.2.4",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.16.6",
