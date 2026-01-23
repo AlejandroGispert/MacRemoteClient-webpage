@@ -129,7 +129,7 @@
 		right: 0;
 		bottom: 0;
 		background: rgba(0, 0, 0, 0.75);
-		backdrop-filter: blur(4px);
+		/* backdrop-filter disabled for performance */
 		z-index: 10000;
 		display: flex;
 		align-items: center;
@@ -171,7 +171,7 @@
 		cursor: pointer;
 		padding: 0.5rem;
 		border-radius: 0.5rem;
-		transition: all 0.2s;
+		transition: background-color 0.2s, color 0.2s;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -217,7 +217,7 @@
 		border-radius: 0.75rem;
 		color: white;
 		cursor: pointer;
-		transition: all 0.2s;
+		transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
 		text-align: left;
 		width: 100%;
 	}
@@ -255,7 +255,7 @@
 		border-radius: 0.5rem;
 		color: rgba(255, 255, 255, 0.7);
 		cursor: pointer;
-		transition: all 0.2s;
+		transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 		width: 100%;
 		margin-top: 0.5rem;
 		font-size: 0.875rem;
@@ -321,7 +321,7 @@
 
 	.download-icon {
 		color: rgba(255, 255, 255, 0.6);
-		transition: all 0.2s;
+		transition: color 0.2s, transform 0.2s;
 	}
 
 	.version-item:hover .download-icon {
