@@ -159,7 +159,7 @@
 		right: 0;
 		bottom: 0;
 		background: rgba(0, 0, 0, 0.75);
-		backdrop-filter: blur(4px);
+		/* backdrop-filter disabled for performance - causes lag when typing */
 		z-index: 10000;
 		display: flex;
 		align-items: center;
@@ -252,7 +252,9 @@
 		border-radius: 0.5rem;
 		color: white;
 		font-size: 1rem;
-		transition: all 0.2s;
+		transition: border-color 0.2s, box-shadow 0.2s;
+		/* Optimize for typing performance */
+		will-change: border-color;
 	}
 
 	.email-input:focus {
