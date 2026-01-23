@@ -381,7 +381,7 @@
 		font-weight: 600;
 		text-decoration: none;
 		font-size: 0.9rem;
-		box-shadow: 0 10px 20px rgba(250, 204, 21, 0.35);
+		box-shadow: 0 4px 12px rgba(250, 204, 21, 0.15);
 		border: 1px solid rgba(250, 204, 21, 0.9);
 		transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 		white-space: nowrap;
@@ -389,7 +389,7 @@
 
 	.donate-button:hover {
 		transform: translateY(-1px);
-		box-shadow: 0 15px 30px rgba(250, 204, 21, 0.45);
+		box-shadow: 0 6px 16px rgba(250, 204, 21, 0.2);
 		filter: brightness(1.05);
 	}
 
