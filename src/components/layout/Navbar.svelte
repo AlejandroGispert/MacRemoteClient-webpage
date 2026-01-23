@@ -78,6 +78,11 @@
 					<li role="none"><a href="/terms" class="dropdown-link" role="menuitem" tabindex={dropdownOpen ? 0 : -1}>Terms of Service</a></li>
 				</ul>
 			</li>
+			<li role="none">
+				<a href="/donate" class="donate-button" role="menuitem">
+					Donate
+				</a>
+			</li>
 		</ul>
 		
 		<!-- Mobile Menu Button -->
@@ -357,6 +362,34 @@
 		outline: 2px solid #6366f1;
 		outline-offset: 2px;
 		padding-left: 0.5rem;
+	}
+
+	.donate-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.4rem 1rem;
+		border-radius: 999px;
+		background: linear-gradient(135deg, #facc15, #f97316);
+		color: #111827;
+		font-weight: 600;
+		text-decoration: none;
+		font-size: 0.9rem;
+		box-shadow: 0 10px 20px rgba(250, 204, 21, 0.35);
+		border: 1px solid rgba(250, 204, 21, 0.9);
+		transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+		white-space: nowrap;
+	}
+
+	.donate-button:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 15px 30px rgba(250, 204, 21, 0.45);
+		filter: brightness(1.05);
+	}
+
+	.donate-button:focus-visible {
+		outline: 2px solid #facc15;
+		outline-offset: 3px;
 	}
 
 	/* Mobile perf: backdrop-filter is expensive (often causes scroll jank) */
