@@ -40,6 +40,12 @@
 			closeMobileMenu();
 		}
 	}
+	
+	function handleHashClick(event) {
+		// Just close mobile menu - let browser handle navigation naturally
+		// The Layout script will handle scrolling to hash on page load
+		closeMobileMenu();
+	}
 </script>
 
 <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -53,9 +59,9 @@
 		<!-- Desktop Navigation -->
 		<ul class="nav-links" role="menubar">
 			<li role="none"><a href="/" class="nav-link" role="menuitem" onclick={handleHomeClick}>Home</a></li>
-			<li role="none"><a href="#features" class="nav-link" role="menuitem">Features</a></li>
-			<li role="none"><a href="#about" class="nav-link" role="menuitem">About</a></li>
-			<li role="none"><a href="#download" class="nav-link" role="menuitem">Download</a></li>
+			<li role="none"><a href="/#features" class="nav-link" role="menuitem" onclick={handleHashClick}>Features</a></li>
+			<li role="none"><a href="/#about" class="nav-link" role="menuitem" onclick={handleHashClick}>About</a></li>
+			<li role="none"><a href="/#download" class="nav-link" role="menuitem" onclick={handleHashClick}>Download</a></li>
 			<li class="nav-dropdown" role="none">
 				<button 
 					class="nav-link dropdown-trigger"
@@ -110,9 +116,9 @@
 	>
 		<ul class="mobile-nav-links" role="none">
 			<li role="none"><a href="/" class="mobile-nav-link" onclick={handleHomeClick} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Home</a></li>
-			<li role="none"><a href="#features" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Features</a></li>
-			<li role="none"><a href="#about" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>About</a></li>
-			<li role="none"><a href="#download" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Download</a></li>
+			<li role="none"><a href="/#features" class="mobile-nav-link" onclick={handleHashClick} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Features</a></li>
+			<li role="none"><a href="/#about" class="mobile-nav-link" onclick={handleHashClick} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>About</a></li>
+			<li role="none"><a href="/#download" class="mobile-nav-link" onclick={handleHashClick} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Download</a></li>
 			<li role="none"><a href="/privacy" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Privacy Policy</a></li>
 			<li role="none"><a href="/terms" class="mobile-nav-link" onclick={closeMobileMenu} role="menuitem" tabindex={mobileMenuOpen ? 0 : -1}>Terms of Service</a></li>
 		</ul>

@@ -132,23 +132,53 @@ const fullImageURL = new URL(image, Astro.site || 'https://macremotecontrollerwe
 		<!-- Skip to main content link for keyboard navigation -->
 		<a href="#main-content" class="skip-link">Skip to main content</a>
 		
-		<!-- Ensure page starts at top, especially on mobile -->
+		<!-- Ensure page starts at top, especially on mobile, or scrolls to hash if present -->
 		<script is:inline>
 			// Prevent scroll restoration and ensure page starts at top
 			if ('scrollRestoration' in history) {
 				history.scrollRestoration = 'manual';
 			}
-			// Scroll to top on page load
+			// Handle scroll on page load - either to hash or to top
 			(function() {
-				function scrollToTop() {
-					window.scrollTo(0, 0);
+				function scrollToHash() {
+					const hash = window.location.hash;
+					if (hash) {
+						const targetId = hash.substring(1); // Remove the #
+						const targetElement = document.getElementById(targetId);
+						if (targetElement) {
+							// Use requestAnimationFrame for reliable timing
+							requestAnimationFrame(function() {
+								targetElement.scrollIntoView({
+									behavior: 'smooth',
+									block: 'start'
+								});
+							});
+							return true; // Hash was handled
+						}
+					}
+					return false; // No hash to handle
 				}
-				// Scroll immediately if page is already loaded
-				if (document.readyState === 'complete') {
-					scrollToTop();
-				} else {
-					window.addEventListener('load', scrollToTop);
-					document.addEventListener('DOMContentLoaded', scrollToTop);
+				
+				function handleInitialScroll() {
+					if (!scrollToHash()) {
+						// No hash, scroll to top
+						window.scrollTo(0, 0);
+					}
+				}
+				
+				// Handle scroll based on page load state
+				if (document.readyState === 'loading') {
+					// Page is still loading, wait for DOMContentLoaded
+					document.addEventListener('DOMContentLoaded', handleInitialScroll);
+				} else if (document.readyState === 'interactive' || document.readyState === 'complete') {
+					// DOM is ready or page is loaded
+					// For hash navigation from other pages, wait a bit for layout
+					if (window.location.hash) {
+						// Use a small delay to ensure layout is complete
+						setTimeout(handleInitialScroll, 0);
+					} else {
+						handleInitialScroll();
+					}
 				}
 			})();
 		</script>
