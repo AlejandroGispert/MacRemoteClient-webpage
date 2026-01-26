@@ -6,7 +6,15 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://macremotecontrollerwebpage.netlify.app",
-  integrations: [svelte(), tailwind(), sitemap()],
+  integrations: [
+    svelte(),
+    tailwind(),
+    sitemap({
+      changefreq: "weekly",
+      priority: 0.7,
+      lastmod: new Date(),
+    }),
+  ],
 
   // Performance optimizations
   build: {

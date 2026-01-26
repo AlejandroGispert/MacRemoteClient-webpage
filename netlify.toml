@@ -5,3 +5,9 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# Redirect sitemap.xml to sitemap-index.xml for compatibility
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 301
+
