@@ -1,16 +1,58 @@
-<section class="section screenshots-section">
+<section id="see-it-in-action" class="section screenshots-section">
 	<div class="container">
 		<h2 class="section-title">See It In Action</h2>
 		<div class="screenshot-container">
-			<img 
-				src="/Desktop.png" 
-				alt="Mac Remote Controller Desktop Application" 
-				class="screenshot-image"
-				width="1200"
-				height="800"
-				loading="lazy"
-				decoding="async"
-			/>
+			<button
+				class="screenshot-trigger"
+				type="button"
+				data-video-trigger
+				aria-label="Play Mac Remote Controller demo video"
+				aria-controls="mrc-demo-video"
+				aria-expanded="false"
+			>
+				<img 
+					src="/Desktop.png" 
+					alt="Mac Remote Controller Desktop Application" 
+					class="screenshot-image"
+					width="1200"
+					height="800"
+					loading="lazy"
+					decoding="async"
+				/>
+				<span class="play-icon" aria-hidden="true"></span>
+			</button>
+
+			<div id="mrc-demo-video" class="video-wrapper" data-video-wrapper hidden>
+				<div class="video-aspect">
+					<iframe
+						title="Mac Remote Controller demo video"
+						data-video-src="https://www.youtube-nocookie.com/embed/SWX6E6nTCjU?autoplay=1&mute=1&playsinline=1&rel=0&controls=0&enablejsapi=1"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerpolicy="strict-origin-when-cross-origin"
+						allowfullscreen
+					></iframe>
+				</div>
+
+				<div class="video-controls" data-video-controls hidden>
+					<button class="mute-button" type="button" data-mute-button aria-pressed="true">
+						Muted
+					</button>
+					<label class="volume-label">
+						<span class="volume-text">Volume</span>
+						<input
+							class="volume-slider"
+							data-volume-slider
+							type="range"
+							min="0"
+							max="100"
+							value="50"
+							step="1"
+							aria-label="Video volume"
+						/>
+					</label>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -43,6 +85,53 @@
 		align-items: center;
 	}
 	
+	.screenshot-trigger {
+		display: inline-block;
+		position: relative;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		border-radius: 1.5rem;
+		line-height: 0;
+		cursor: pointer;
+	}
+
+	.screenshot-trigger:focus-visible {
+		outline: 3px solid #6366f1;
+		outline-offset: 4px;
+	}
+
+	.play-icon {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		border-radius: 1.5rem;
+		background: rgba(0, 0, 0, 0.25);
+		transition: background 0.2s ease;
+	}
+
+	.play-icon::before {
+		content: "";
+		display: block;
+		width: 82px;
+		height: 82px;
+		border-radius: 999px;
+		background: rgba(0, 0, 0, 0.45);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+	}
+
+	.play-icon::after {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-left: 22px solid rgba(255, 255, 255, 0.95);
+		border-top: 14px solid transparent;
+		border-bottom: 14px solid transparent;
+		transform: translateX(3px);
+	}
+
 	.screenshot-image {
 		max-width: 100%;
 		width: auto;
@@ -51,6 +140,217 @@
 		border-radius: 1.5rem;
 		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 		border: 2px solid #6366f1;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		will-change: transform;
+	}
+
+	.screenshot-trigger:hover .play-icon {
+		background: rgba(0, 0, 0, 0.15);
+	}
+
+	.screenshot-trigger:hover .screenshot-image {
+		transform: translateY(-2px);
+		box-shadow: 0 26px 70px rgba(0, 0, 0, 0.55);
+	}
+
+	.video-wrapper {
+		width: min(1200px, 100%);
+		border-radius: 1.5rem;
+		overflow: hidden;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+		border: 2px solid #6366f1;
+	}
+
+	.video-aspect {
+		aspect-ratio: 16 / 9;
+		background: black;
+	}
+
+	.video-aspect iframe {
+		width: 100%;
+		height: 100%;
+		display: block;
+		border: 0;
+	}
+
+	.video-controls {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.75rem 1rem;
+		background: rgba(15, 15, 35, 0.9);
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.mute-button {
+		background: rgba(99, 102, 241, 0.2);
+		border: 1px solid rgba(99, 102, 241, 0.6);
+		color: rgba(255, 255, 255, 0.95);
+		padding: 0.4rem 0.7rem;
+		border-radius: 999px;
+		font-weight: 600;
+		cursor: pointer;
+	}
+
+	.mute-button:hover {
+		background: rgba(99, 102, 241, 0.28);
+	}
+
+	.mute-button:focus-visible {
+		outline: 3px solid #6366f1;
+		outline-offset: 3px;
+	}
+
+	.volume-label {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		flex: 1;
+		min-width: 0;
+	}
+
+	.volume-text {
+		color: rgba(255, 255, 255, 0.85);
+		font-size: 0.9rem;
+		white-space: nowrap;
+	}
+
+	.volume-slider {
+		flex: 1;
+		min-width: 140px;
+	}
+
+	@media (max-width: 520px) {
+		.video-controls {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		.volume-label {
+			width: 100%;
+		}
+		.volume-slider {
+			width: 100%;
+		}
 	}
 </style>
+
+<script is:inline>
+	(() => {
+		const loadYouTubeIframeAPI = () => {
+			if (window.YT && typeof window.YT.Player === 'function') {
+				return Promise.resolve(window.YT);
+			}
+
+			if (window.__mrcYtApiPromise) return window.__mrcYtApiPromise;
+
+			window.__mrcYtApiPromise = new Promise((resolve) => {
+				const existing = document.querySelector('script[data-yt-iframe-api]');
+				if (existing) return;
+
+				const tag = document.createElement('script');
+				tag.src = 'https://www.youtube.com/iframe_api';
+				tag.async = true;
+				tag.dataset.ytIframeApi = 'true';
+				document.head.appendChild(tag);
+
+				const prev = window.onYouTubeIframeAPIReady;
+				window.onYouTubeIframeAPIReady = () => {
+					if (typeof prev === 'function') prev();
+					resolve(window.YT);
+				};
+			});
+
+			return window.__mrcYtApiPromise;
+		};
+
+		const init = () => {
+			const section = document.getElementById('see-it-in-action');
+			if (!section) return;
+
+			const trigger = section.querySelector('[data-video-trigger]');
+			const wrapper = section.querySelector('[data-video-wrapper]');
+			const iframe = section.querySelector('iframe[data-video-src]');
+			const controls = section.querySelector('[data-video-controls]');
+			const muteButton = section.querySelector('[data-mute-button]');
+			const volumeSlider = section.querySelector('[data-volume-slider]');
+			if (!trigger || !wrapper || !iframe) return;
+
+			let player = null;
+
+			const setMuteUi = (muted) => {
+				if (!muteButton) return;
+				muteButton.setAttribute('aria-pressed', muted ? 'true' : 'false');
+				muteButton.textContent = muted ? 'Muted' : 'Sound on';
+			};
+
+			trigger.addEventListener('click', () => {
+				trigger.setAttribute('aria-expanded', 'true');
+				// Fully remove the screenshot/button so it can't overlay the video
+				trigger.remove();
+				wrapper.hidden = false;
+
+				if (iframe.dataset.loaded !== 'true') {
+					iframe.src = iframe.dataset.videoSrc || '';
+					iframe.dataset.loaded = 'true';
+				}
+
+				if (controls) controls.hidden = false;
+
+				loadYouTubeIframeAPI()
+					.then(() => {
+						// Initialize YouTube player for volume/mute control
+						player = new window.YT.Player(iframe, {
+							events: {
+								onReady: (e) => {
+									const initialVol = volumeSlider ? Number(volumeSlider.value) : 50;
+									e.target.setVolume(Number.isFinite(initialVol) ? initialVol : 50);
+									e.target.mute(); // start muted (autoplay-friendly)
+									setMuteUi(true);
+									// In case autoplay didn't start, nudge play on click gesture
+									try { e.target.playVideo(); } catch {}
+								},
+							},
+						});
+					})
+					.catch(() => {
+						// If API fails, user can still use YouTube's built-in controls
+					});
+			});
+
+			if (muteButton) {
+				muteButton.addEventListener('click', () => {
+					if (!player) return;
+					if (player.isMuted()) {
+						player.unMute();
+						setMuteUi(false);
+					} else {
+						player.mute();
+						setMuteUi(true);
+					}
+				});
+			}
+
+			if (volumeSlider) {
+				volumeSlider.addEventListener('input', () => {
+					if (!player) return;
+					const vol = Math.max(0, Math.min(100, Number(volumeSlider.value)));
+					player.setVolume(vol);
+					if (vol === 0) {
+						player.mute();
+						setMuteUi(true);
+					} else {
+						player.unMute();
+						setMuteUi(false);
+					}
+				});
+			}
+		};
+
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', init, { once: true });
+		} else {
+			init();
+		}
+	})();
+</script>
 
