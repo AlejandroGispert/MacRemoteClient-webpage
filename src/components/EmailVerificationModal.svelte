@@ -10,11 +10,35 @@
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-	async function handleSubmit() {
+	function startDownload(downloadEmail) {
+		trackDownloadClick('mac');
+		trackDownloadAttempt('mac', true);
+
+		if (onVerified) {
+			onVerified(downloadEmail);
+		}
+
+		isOpen = false;
+		email = '';
+		errorMessage = '';
+
+		toastSuccess('Download Started', {
+			description: `Downloading ${selectedVersion?.label || 'v2.0'}...`,
+			duration: 3000,
+		});
+	}
+
+	function handleDownloadWithoutRegister() {
+		if (isLoading) return;
+		errorMessage = '';
+		startDownload(null);
+	}
+
+	async function handleJoinUserBaseAndDownload() {
 		errorMessage = '';
 
 		if (!email) {
-			errorMessage = 'Please enter your email address';
+			errorMessage = 'Please enter an email address to join our user base';
 			return;
 		}
 
@@ -30,24 +54,7 @@
 			const result = await registerEmail(email, selectedVersion?.filename || 'MacRCDesktop_v2.0.dmg');
 
 			if (result.success) {
-				// Track download
-				trackDownloadClick('mac');
-				trackDownloadAttempt('mac', true);
-
-				// Trigger download
-				if (onVerified) {
-					onVerified(email);
-				}
-
-				// Close modal
-				isOpen = false;
-				email = '';
-				errorMessage = '';
-
-				toastSuccess('Download Started', {
-					description: `Downloading ${selectedVersion?.label || 'v2.0'}...`,
-					duration: 3000,
-				});
+				startDownload(email);
 			} else {
 				errorMessage = result.error || 'Failed to register email';
 				toastError('Error', {
@@ -84,7 +91,7 @@
 			handleClose();
 		}
 		if (event.key === 'Enter' && !isLoading) {
-			handleSubmit();
+			handleJoinUserBaseAndDownload();
 		}
 		// Handle Enter/Space on overlay to close
 		if ((event.key === 'Enter' || event.key === ' ') && event.target === event.currentTarget) {
@@ -111,14 +118,17 @@
 			</button>
 
 			<div class="modal-body">
-				<h2 id="modal-title" class="modal-title">Enter Your Email</h2>
+				<h2 id="modal-title" class="modal-title">Download Mac App</h2>
 				<p class="modal-description">
-					Enter your email address to download {selectedVersion?.label || 'v2.0'}.
+					<strong>Join our user base</strong> for advantages and special features.
+				</p>
+				<p class="modal-description small">
+					Email is optional. Choose “Download without registering” to skip. If you join our user base, we’ll associate your email with this download.
 				</p>
 
-				<form onsubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+				<form onsubmit={(e) => { e.preventDefault(); handleJoinUserBaseAndDownload(); }}>
 					<div class="input-group">
-						<label for="email-input" class="sr-only">Email address</label>
+						<label for="email-input" class="sr-only">Email address (optional)</label>
 						<input
 							id="email-input"
 							type="email"
@@ -127,24 +137,33 @@
 							disabled={isLoading}
 							class="email-input"
 							autocomplete="email"
-							required
 						/>
 						{#if errorMessage}
 							<p class="error-message">{errorMessage}</p>
 						{/if}
 					</div>
 
-					<button 
-						type="submit" 
-						class="submit-button"
-						disabled={isLoading}
-					>
-						{#if isLoading}
-							Downloading...
-						{:else}
-							Download {selectedVersion?.label || 'v2.0'}
-						{/if}
-					</button>
+					<div class="actions">
+						<button 
+							type="submit" 
+							class="submit-button"
+							disabled={isLoading}
+						>
+							{#if isLoading}
+								Processing...
+							{:else}
+								 Download {selectedVersion?.label || 'v2.0'}
+							{/if}
+						</button>
+						<button
+							type="button"
+							class="skip-button"
+							disabled={isLoading}
+							onclick={handleDownloadWithoutRegister}
+						>
+							Download without registering
+						</button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -297,6 +316,35 @@
 	}
 
 	.submit-button:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+
+	.actions {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.skip-button {
+		width: 100%;
+		padding: 0.75rem 1.5rem;
+		background: rgba(255, 255, 255, 0.08);
+		color: rgba(255, 255, 255, 0.9);
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		border-radius: 0.5rem;
+		font-weight: 600;
+		font-size: 1rem;
+		cursor: pointer;
+		transition: all 0.2s;
+	}
+
+	.skip-button:hover:not(:disabled) {
+		background: rgba(255, 255, 255, 0.12);
+		border-color: rgba(255, 255, 255, 0.28);
+	}
+
+	.skip-button:disabled {
 		opacity: 0.6;
 		cursor: not-allowed;
 	}

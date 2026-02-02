@@ -7,7 +7,7 @@ import Layout from '../layouts/Layout.astro';
 		<div class="container">
 			<header class="legal-header">
 				<h1>Privacy Policy</h1>
-				<p class="last-updated">Effective Date: January 1, 2025<br>Last Updated: January 2025</p>
+				<p class="last-updated">Effective Date: February 2, 2026<br>Last Updated: February 2026</p>
 			</header>
 
 			<div class="legal-content">
@@ -24,37 +24,49 @@ import Layout from '../layouts/Layout.astro';
 				<section>
 					<h2>2. Data Collection</h2>
 					<p>
-						We respect your privacy. The Mac Remote Controller application does <strong>not</strong> collect, store, or transmit any personal or sensitive user data from the mobile app or Mac Desktop application.
+						We respect your privacy. Mac Remote Controller does not require an account, and the core local-network remote control features work without you providing personal information.
 					</p>
 					<ul>
 						<li><strong>No account or login is required</strong> - The app works entirely offline on your local network</li>
-						<li><strong>No user data is stored or shared</strong> - All functionality operates within your local environment</li>
-						<li><strong>No personal information is collected</strong> - We do not access your contacts, photos, files, or any other personal data</li>
+						<li><strong>No user content is uploaded by core features</strong> - Remote control operates within your local environment</li>
+						<li><strong>We do not access your contacts, photos, or files</strong> for the core remote-control functionality</li>
 					</ul>
-					
-					<h3>2.1 Email Collection for Download Verification</h3>
+
+					<h3>2.1 Android App: SDK Data (Firebase / AdMob)</h3>
 					<p>
-						To download the Mac Remote Controller Desktop application, we require you to provide your email address for verification purposes. We collect the following information:
+						The Android app uses third-party SDKs (such as Google Firebase and Google Mobile Ads / AdMob). These SDKs may automatically collect and process certain data types, including identifiers that Google Play may classify as “Device or other IDs”.
 					</p>
 					<ul>
-						<li><strong>Email Address:</strong> Required to send a verification link</li>
-						<li><strong>Verification Status:</strong> Whether your email has been verified</li>
-						<li><strong>Download Count:</strong> Number of times you have downloaded the Mac app</li>
-						<li><strong>Timestamp:</strong> When you requested verification and when verification was completed</li>
+						<li><strong>Device or other IDs:</strong> e.g., Advertising ID and/or Firebase installation/app instance identifiers</li>
+						<li><strong>App activity / interactions:</strong> analytics events about how the app is used</li>
+						<li><strong>App info and performance:</strong> crash logs and diagnostics (e.g., via Crashlytics)</li>
 					</ul>
 					<p>
-						This information is stored securely on our backend servers (hosted on Railway) and is used solely to:
+						This data is used to provide analytics, diagnose crashes, and (where applicable) serve ads. These services may process data on our behalf, and in some cases data is shared with Google as part of providing these services.
 					</p>
 					<ul>
-						<li>Verify your email address before allowing downloads</li>
-						<li>Prevent unauthorized access to downloads</li>
-						<li>Monitor download patterns and ensure security</li>
+						<li><strong>Firebase Analytics</strong> (Google)</li>
+						<li><strong>Firebase Crashlytics</strong> (Google)</li>
+						<li><strong>Google Mobile Ads (AdMob)</strong></li>
 					</ul>
 					<p>
-						We do not use your email address for marketing purposes or share it with third parties. Your email is stored only as long as necessary to provide the download service. You can request deletion of your email data by contacting us at the email address provided in the Contact Us section.
+						You can manage ad personalization and identifiers through your Android device settings (for example, resetting or limiting the Advertising ID) and through your Google account ad settings. You can also uninstall the app at any time.
 					</p>
 					
-					<h3>2.2 Website Analytics</h3>
+					<h3>2.2 Mac Desktop Download: Optional Registration</h3>
+					<p>
+						You can download the Mac Remote Controller Desktop app without registering. If you choose to register to <strong>join our user base</strong>, we collect your email address and associate it with basic download metadata.
+					</p>
+					<ul>
+						<li><strong>Email address</strong> (only if you choose to register)</li>
+						<li><strong>Downloaded file/version</strong> (e.g., filename/version)</li>
+						<li><strong>Download count</strong> and <strong>timestamps</strong> (created/last download time)</li>
+					</ul>
+					<p>
+						We use registered emails to build our user base and to share product updates, including announcements about advantages and special features. We do not sell your email address. You can request deletion of your email record by contacting us at the email address in the Contact Us section.
+					</p>
+
+					<h3>2.3 Website Analytics</h3>
 					<p>
 						Our website uses analytics services to understand how visitors interact with our website. These services collect anonymous usage statistics only after you grant consent via our cookie consent banner.
 					</p>
@@ -74,10 +86,10 @@ import Layout from '../layouts/Layout.astro';
 						<li><strong>Microsoft Clarity:</strong> A behavioral analytics tool that provides session recordings, heatmaps, and insights into how users interact with our website. Clarity collects anonymized data including mouse movements, clicks, scroll depth, and page interactions to help us understand user behavior and improve website usability.</li>
 					</ul>
 					<p>
-						All analytics data is aggregated and anonymized. It does not identify you personally and is used solely to improve our website and understand user preferences. You can control analytics cookies through our consent banner. You can also opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.
+						You can control analytics loading through our consent banner. If you choose “Only Necessary”, we only load Umami; if you choose “Allow All”, we also load Firebase Analytics and Microsoft Clarity.
 					</p>
 					
-					<h3>2.3 Cookie Consent</h3>
+					<h3>2.4 Cookie Consent</h3>
 					<p>
 						We use a cookie consent system that allows you to choose between:
 					</p>
@@ -89,12 +101,12 @@ import Layout from '../layouts/Layout.astro';
 						Your consent preference is stored locally in your browser and is respected on all pages. You can change your preference at any time by clearing your browser cookies and revisiting our website.
 					</p>
 					
-					<h3>2.4 Local Network Communication</h3>
+					<h3>2.5 Local Network Communication</h3>
 					<p>
-						The Mac Remote Controller app operates entirely over your local network. All communication occurs directly between your Android device and your Mac on your local network. We do not collect, store, or transmit any personal data to external servers.
+						The Mac Remote Controller app’s remote-control traffic operates over your local network. Communication for controlling your Mac occurs directly between your Android device and your Mac on your local network. Separately, the Android app may send analytics/ads/crash data to third-party providers as described in Section 2.1.
 					</p>
 					
-					<h3>2.5 Device Information</h3>
+					<h3>2.6 Device Information</h3>
 					<p>
 						The application may access device information necessary for establishing local network connections, such as IP addresses and network identifiers. This information is used solely for the purpose of establishing connections between your devices and is not stored or transmitted outside your local network.
 					</p>
@@ -109,7 +121,7 @@ import Layout from '../layouts/Layout.astro';
 						<li><strong>Wi-Fi / Network Access:</strong> Used solely to discover and connect to the server application on your Mac over your local network</li>
 					</ul>
 					<p>
-						These permissions are used <strong>only</strong> for local communication between your Android device and Mac computer. No data is sent to external servers. The app does not require access to your contacts, photos, location, camera, microphone, or any other sensitive permissions.
+						These permissions are used <strong>only</strong> for local communication between your Android device and Mac computer. No local-control traffic is sent to our servers. Depending on the features you use, the Android app may also include optional components such as analytics/ads SDKs (see Section 2.1).
 					</p>
 				</section>
 
@@ -119,9 +131,11 @@ import Layout from '../layouts/Layout.astro';
 						Any information collected is used solely to:
 					</p>
 					<ul>
-						<li><strong>Email Addresses:</strong> Verify your identity before allowing Mac app downloads, send verification emails, and track download patterns for security purposes</li>
+						<li><strong>Email Addresses (optional):</strong> If you register to join our user base, we store your email and associate it with Mac desktop download metadata</li>
+						<li><strong>User base communications:</strong> If you register, we may contact you with product updates, including announcements about advantages and special features</li>
 						<li><strong>Application Data:</strong> Establish and maintain connections between your Android device and Mac, and enable remote control functionality</li>
-						<li><strong>Analytics Data:</strong> Improve the performance and reliability of the application and understand website usage patterns</li>
+						<li><strong>Analytics / Ads SDK Data (Android app):</strong> Improve performance and reliability, measure usage, and (where applicable) serve ads</li>
+						<li><strong>Website Analytics Data:</strong> Improve our website and understand website usage patterns</li>
 						<li><strong>Device Information:</strong> Enable local network communication and improve app functionality</li>
 					</ul>
 					<p>
@@ -132,30 +146,31 @@ import Layout from '../layouts/Layout.astro';
 				<section>
 					<h2>5. Data Storage</h2>
 					<p>
-						<strong>Application Data:</strong> All app data remains on your devices. We do not store any personal information on external servers from the mobile or Mac applications. Any preferences or settings you configure are stored locally on your devices.
+						<strong>Application Data:</strong> Core remote-control preferences/settings remain on your devices. We do not operate an account system for the mobile or Mac apps. Separately, third-party SDKs in the Android app (if enabled/used) may collect and store analytics/ads/crash data as described in Section 2.1.
 					</p>
 					<p>
-						<strong>Email Verification Data:</strong> Email addresses and verification data collected for Mac app downloads are stored securely on our backend servers hosted on Railway. This data is encrypted in transit and at rest. We retain this data only as long as necessary to provide the download verification service. You can request deletion of your email data at any time by contacting us.
+						<strong>Mac Download Email Data (Optional):</strong> If you register to join our user base when downloading the Mac desktop app, we store your email securely on our backend servers hosted on Railway along with download metadata (filename/version, download count, timestamps). This data is encrypted in transit. You can request deletion of your email data at any time by contacting us.
 					</p>
 					<p>
-						<strong>Website Analytics Data:</strong> Website analytics data is stored by the respective analytics providers (Umami, Google Firebase Analytics, and Microsoft Clarity) in accordance with their privacy policies. This data is anonymized and does not include personal identifiers.
+						<strong>Website Analytics Data:</strong> Website analytics data is stored by the respective analytics providers (Umami, Google Firebase Analytics, and Microsoft Clarity) in accordance with their privacy policies.
+					</p>
+					<p>
+						<strong>Android SDK Data:</strong> Analytics/ads/crash data collected by third-party SDKs (Firebase/AdMob/Crashlytics) is stored and processed by those providers in accordance with their privacy policies.
 					</p>
 				</section>
 
 				<section>
 					<h2>6. Third-Party Services</h2>
 					<p>
-						The Mac Remote Controller app does <strong>not</strong> use any third-party services, advertising SDKs, or analytics platforms within the mobile or Mac applications.
-					</p>
-					<p>
-						Our website and download verification system use the following third-party services:
+						Our website, Android app, and download system may use the following third-party services:
 					</p>
 					<ul>
-						<li><strong>Railway:</strong> Hosts our backend server for email verification and download tracking. Railway stores email verification data securely. See <a href="https://railway.app/legal/privacy" target="_blank" rel="noopener noreferrer">Railway's Privacy Policy</a></li>
+						<li><strong>Railway:</strong> Hosts our backend server for email collection and download metadata. See <a href="https://railway.app/legal/privacy" target="_blank" rel="noopener noreferrer">Railway's Privacy Policy</a></li>
 						<li><strong>Umami Analytics:</strong> Privacy-focused analytics service for website usage statistics. Umami does not use cookies and respects Do Not Track. See <a href="https://umami.is/privacy" target="_blank" rel="noopener noreferrer">Umami's Privacy Policy</a></li>
 						<li><strong>Firebase Analytics (Google):</strong> Optional website usage analytics (only when you choose "Allow All"). See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
 						<li><strong>Microsoft Clarity:</strong> Optional behavioral analytics service that provides session recordings and heatmaps (only when you choose "Allow All"). See <a href="https://clarity.microsoft.com/terms" target="_blank" rel="noopener noreferrer">Microsoft Clarity's Terms of Service</a> and <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft's Privacy Statement</a></li>
-						<li><strong>Email Service Provider:</strong> We use SMTP services (e.g., Gmail, SendGrid, or similar) to send verification emails. Email addresses are only used for verification purposes.</li>
+						<li><strong>Google Mobile Ads (AdMob):</strong> May be used in the Android app to serve ads. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
+						<li><strong>Firebase Crashlytics (Google):</strong> May be used in the Android app for crash reporting. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
 						<li><strong>Google Play Store:</strong> For app distribution. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
 					</ul>
 					<p>
@@ -166,14 +181,14 @@ import Layout from '../layouts/Layout.astro';
 				<section>
 					<h2>7. Data Security</h2>
 					<p>
-						Since all communication occurs over your local network and no data is transmitted to external servers, your data remains secure within your local environment. We implement appropriate technical measures to ensure the security of your local network communications.
+						Core remote-control communication happens over your local network. For our website and backend services, we use standard security measures and encrypt data in transit (HTTPS) where applicable.
 					</p>
 				</section>
 
 				<section>
 					<h2>8. Children's Privacy</h2>
 					<p>
-						Since the app does not collect any personal data, it is suitable for all age groups. However, we recommend parental supervision where required by applicable laws. Our application is not intended for children under the age of 13, and we do not knowingly collect personal information from children under 13.
+						Our application is not intended for children under the age of 13, and we do not knowingly collect personal information from children under 13. If you are under 13, please do not register (join our user base) or provide an email address on our website.
 					</p>
 				</section>
 
@@ -183,15 +198,16 @@ import Layout from '../layouts/Layout.astro';
 						You have the right to:
 					</p>
 					<ul>
-						<li>Use the mobile and Mac applications without providing any personal information (except for email verification required for Mac app downloads)</li>
+						<li>Use the mobile and Mac applications without providing personal information</li>
 						<li>Control all data stored locally on your devices</li>
 						<li>Control cookie and analytics consent via our consent banner</li>
-						<li>Opt out of website analytics using browser settings, our consent banner, or the Google Analytics Opt-out Add-on</li>
-						<li>Request deletion of your email verification data by contacting us</li>
+						<li>Opt out of website analytics using our consent banner</li>
+						<li>Manage Android ad personalization/identifiers through your device settings (where applicable)</li>
+						<li>Request deletion of your Mac download email data by contacting us</li>
 						<li>Uninstall the app at any time, which removes all locally stored data</li>
 					</ul>
 					<p>
-						If you wish to have your email verification data deleted, please contact us at the email address provided in the Contact Us section, and we will remove your information from our systems within 30 days.
+						If you wish to have your Mac download email data deleted, please contact us at the email address provided in the Contact Us section.
 					</p>
 				</section>
 
