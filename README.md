@@ -51,7 +51,7 @@ bun run preview
 
 ## 📁 Project Structure
 
-```
+```text
 /
 ├── public/          # Static assets (images, fonts, etc.)
 ├── src/
@@ -75,6 +75,46 @@ Format:
   "url": "https://macremotecontrollerwebpage.netlify.app/"
 }
 ```
+
+## Remote Controls Catalog (Web)
+
+This repo serves a remote controls catalog from `public/controls/`, which is published at:
+
+- `https://macremotecontrollerwebpage.netlify.app/controls/catalog.json`
+
+Directory structure:
+
+```text
+public/controls/
+  ├── catalog.json
+  ├── catalog.json.sig      <-- Optional (recommended if your client verifies RSA signatures)
+  ├── icons/
+  │   └── safari-private.png
+  └── scripts/
+      └── safari-private.scpt
+```
+
+### Hashes (SHA-256)
+
+Compute hashes and paste the hex string into `public/controls/catalog.json`:
+
+```bash
+shasum -a 256 public/controls/scripts/safari-private.scpt
+shasum -a 256 public/controls/icons/safari-private.png
+```
+
+### Signing the manifest (RSA)
+
+If you're using RSA signing/verification in the client, generate and upload the signature:
+
+```bash
+openssl dgst -sha256 -sign private_key.pem -out public/controls/catalog.json.sig public/controls/catalog.json
+```
+
+### Notes
+
+- The checked-in `public/controls/scripts/safari-private.scpt` is AppleScript source for convenience. For production, compile it in Script Editor and replace the file with the compiled `.scpt`.
+- Ensure these files are served over HTTPS.
 
 ## 🎨 Using Svelte Components
 
