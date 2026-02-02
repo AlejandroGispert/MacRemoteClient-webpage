@@ -113,6 +113,8 @@ If you're using RSA signing/verification in the client, generate and upload the 
 openssl dgst -sha256 -sign private_key.pem -out public/web_controls/catalog.json.sig public/web_controls/catalog.json
 ```
 
+**Netlify:** Place `catalog.json.sig` in `public/web_controls/` (or in the project root; the build copies it there) so it is served at `/web_controls/catalog.json.sig`.
+
 ### Notes
 
 - The checked-in `public/web_controls/scripts/*.scpt` files are AppleScript source for convenience. For production, compile them in Script Editor and replace the files with the compiled `.scpt`.
