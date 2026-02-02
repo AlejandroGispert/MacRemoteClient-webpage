@@ -61,6 +61,21 @@ bun run preview
 └── astro.config.mjs # Astro configuration
 ```
 
+## Announcing a New Version
+
+To announce a new version, you need to update the `version.json` file on your server:
+
+Path: `https://macremotecontrollerwebpage.netlify.app/assets/version.json`
+
+Format:
+
+```json
+{
+  "version": "2.0",
+  "url": "https://macremotecontrollerwebpage.netlify.app/"
+}
+```
+
 ## 🎨 Using Svelte Components
 
 Svelte components can be used in Astro pages with the `client:` directive:
