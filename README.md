@@ -78,14 +78,16 @@ Format:
 
 ## Remote Controls Catalog (Web)
 
-This repo serves a remote controls catalog from `public/controls/`, which is published at:
+This repo serves a remote controls catalog from `public/web_controls/`, which is published at:
 
-- `https://macremotecontrollerwebpage.netlify.app/controls/catalog.json`
+- `https://macremotecontrollerwebpage.netlify.app/web_controls/catalog.json`
+
+For backwards compatibility, `netlify.toml` redirects `/controls/*` to `/web_controls/*`.
 
 Directory structure:
 
 ```text
-public/controls/
+public/web_controls/
   ├── catalog.json
   ├── catalog.json.sig      <-- Optional (recommended if your client verifies RSA signatures)
   ├── icons/
@@ -96,11 +98,11 @@ public/controls/
 
 ### Hashes (SHA-256)
 
-Compute hashes and paste the hex string into `public/controls/catalog.json`:
+Compute hashes and paste the hex string into `public/web_controls/catalog.json`:
 
 ```bash
-shasum -a 256 public/controls/scripts/safari-private.scpt
-shasum -a 256 public/controls/icons/safari-private.png
+shasum -a 256 public/web_controls/scripts/safari-private.scpt
+shasum -a 256 public/web_controls/icons/safari-private.png
 ```
 
 ### Signing the manifest (RSA)
@@ -108,13 +110,15 @@ shasum -a 256 public/controls/icons/safari-private.png
 If you're using RSA signing/verification in the client, generate and upload the signature:
 
 ```bash
-openssl dgst -sha256 -sign private_key.pem -out public/controls/catalog.json.sig public/controls/catalog.json
+openssl dgst -sha256 -sign private_key.pem -out public/web_controls/catalog.json.sig public/web_controls/catalog.json
 ```
 
 ### Notes
 
-- The checked-in `public/controls/scripts/safari-private.scpt` is AppleScript source for convenience. For production, compile it in Script Editor and replace the file with the compiled `.scpt`.
+- The checked-in `public/web_controls/scripts/*.scpt` files are AppleScript source for convenience. For production, compile them in Script Editor and replace the files with the compiled `.scpt`.
 - Ensure these files are served over HTTPS.
+- Never commit `private_key.pem` to git. Keep it local or in CI secrets.
+- Some scripts (e.g. ones that use `System Events` for keystrokes) require macOS Accessibility permissions.
 
 ## 🎨 Using Svelte Components
 

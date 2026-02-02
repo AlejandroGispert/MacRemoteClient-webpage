@@ -4,11 +4,47 @@
     "com.apple.Safari": [
       {
         "id": "safari-private",
-        "name": "New Tab",
-        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/controls/icons/safari-private.png",
-        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/controls/scripts/safari-private.scpt",
+        "name": "New Tab 2",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/safari-private.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/safari-private.scpt",
         "iconHash": "bd236b47f4a2c62251c21cc270e21cb81cf735b7b27e4d917f0f47a237b960a7",
         "scriptHash": "a3f22716b47b2e7b5b949d9a87a3fbeada35a15448fe334704e959eb93e7f8a0"
+      }
+    ],
+    "com.googlecode.iterm2": [
+      {
+        "id": "iterm-split-vert",
+        "name": "Split Vertically",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/safari-private.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/iterm-split-vert.scpt",
+        "iconHash": "bd236b47f4a2c62251c21cc270e21cb81cf735b7b27e4d917f0f47a237b960a7",
+        "scriptHash": "32df0cb91900d57d2adbbb89e9458e4e7fddb8f745c331803561020d639e0ccf"
+      },
+      {
+        "id": "iterm-split-horiz",
+        "name": "Split Horizontally",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/safari-private.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/iterm-split-horiz.scpt",
+        "iconHash": "bd236b47f4a2c62251c21cc270e21cb81cf735b7b27e4d917f0f47a237b960a7",
+        "scriptHash": "49771acd6d8a64fcbe63f23a090ee3b870f424748ae96589a7ab085dece4fb80"
+      }
+    ],
+    "com.ableton.live": [
+      {
+        "id": "ableton-record",
+        "name": "Record",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/safari-private.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/ableton-record.scpt",
+        "iconHash": "bd236b47f4a2c62251c21cc270e21cb81cf735b7b27e4d917f0f47a237b960a7",
+        "scriptHash": "7c4a54b09e8b75c3fe31f6eaf711d8916167d8f5e777419aa2dbc4472483cde7"
+      },
+      {
+        "id": "ableton-play",
+        "name": "Play / Stop",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/safari-private.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/ableton-play.scpt",
+        "iconHash": "bd236b47f4a2c62251c21cc270e21cb81cf735b7b27e4d917f0f47a237b960a7",
+        "scriptHash": "687cbd6da6bacca92633e257133c740446fd2b07741889c99407e53018c93fb7"
       }
     ]
   }
