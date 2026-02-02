@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "apps": {
+    "com.apple.Safari": [
+      {
+        "id": "safari-private",
+        "name": "New Tab",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/controls/icons/safari-private.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/controls/scripts/safari-private.scpt",
+        "iconHash": "bd236b47f4a2c62251c21cc270e21cb81cf735b7b27e4d917f0f47a237b960a7",
+        "scriptHash": "a3f22716b47b2e7b5b949d9a87a3fbeada35a15448fe334704e959eb93e7f8a0"
+      }
+    ]
+  }
+}
