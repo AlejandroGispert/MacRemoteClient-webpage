@@ -51,17 +51,9 @@ import Layout from '../layouts/Layout.astro';
 						}
 
 						// Download URL
-						const downloadUrl = '/files/MacRCDesktop_v2.1.dmg';
+						const downloadUrl = 'https://github.com/AlejandroGispert/MacRemoteClient-webpage/releases/download/v2.1/MacRCDesktop.v2.1.Install.dmg';
 						
-						// Automatically trigger download
-						const link = document.createElement('a');
-						link.href = downloadUrl;
-						link.download = 'MacRCDesktop_v2.1.dmg';
-						link.target = '_blank';
-						link.rel = 'noopener noreferrer';
-						document.body.appendChild(link);
-						link.click();
-						document.body.removeChild(link);
+						
 
 						statusElement.innerHTML = `
 							<div class="success">
