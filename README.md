@@ -141,6 +141,16 @@ Available directives:
 - `client:visible` - Load when component is visible
 - `client:media` - Load based on media query
 
+## Hosting the DMG
+
+`.dmg` installers are in `.gitignore` because GitHub rejects files over 100 MB. To serve them:
+
+1. **GitHub Releases (recommended)**  
+   Create a release, attach `MacRCDesktop_v2.1.dmg`, then point the app at the asset URL (e.g. `https://github.com/.../releases/download/v2.1/MacRCDesktop_v2.1.dmg`) in `VersionSelector.svelte`, `MacDownloadButton.svelte`, and `verify.astro`.
+
+2. **Git LFS**  
+   Run `git lfs track "public/files/*.dmg"`, add and commit the file, then push. Ensure your host (e.g. Netlify) has Git LFS enabled so the file is available in the deployed site.
+
 ## 📚 Learn More
 
 - [Astro Documentation](https://docs.astro.build)
