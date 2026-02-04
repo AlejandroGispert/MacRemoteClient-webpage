@@ -74,19 +74,9 @@
 	}
 
 	function handleEmailVerified(email) {
-		// Download the selected version (use GitHub releases URL)
+		// Download the selected version (GitHub releases URL - use window.open for reliable cross-origin download)
 		const downloadUrl = selectedVersion.downloadUrl || url;
-		const downloadFilename = selectedVersion.filename;
-		
-		// Trigger download
-		const link = document.createElement('a');
-		link.href = downloadUrl;
-		link.download = downloadFilename;
-		link.target = '_blank';
-		link.rel = 'noopener noreferrer';
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
+		window.open(downloadUrl, '_blank', 'noopener,noreferrer');
 	}
 </script>
 
