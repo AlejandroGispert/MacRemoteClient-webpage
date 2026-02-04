@@ -10,7 +10,8 @@
 	let showEmailModal = $state(false);
 	let showVersionSelector = $state(false);
 	let downloadLink = $state(null);
-	let selectedVersion = $state({ version: '2.1', filename: 'MacRCDesktop_v2.1.dmg', label: 'v2.1 (Latest)' });
+	const DEFAULT_V2_1 = { version: '2.1', filename: 'MacRCDesktop_v2.1.dmg', label: 'v2.1 (Latest)', downloadUrl: 'https://github.com/AlejandroGispert/MacRemoteClient-webpage/releases/download/v2.1/MacRCDesktop.v2.1.Install.dmg' };
+	let selectedVersion = $state(DEFAULT_V2_1);
 	
 	const sizeClasses = {
 		large: 'px-8 py-4 text-lg',
@@ -73,8 +74,8 @@
 	}
 
 	function handleEmailVerified(email) {
-		// Download the selected version
-		const downloadUrl = `/files/${selectedVersion.filename}`;
+		// Download the selected version (use GitHub releases URL)
+		const downloadUrl = selectedVersion.downloadUrl || url;
 		const downloadFilename = selectedVersion.filename;
 		
 		// Trigger download
