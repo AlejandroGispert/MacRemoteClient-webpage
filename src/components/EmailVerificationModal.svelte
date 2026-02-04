@@ -51,7 +51,7 @@
 
 		try {
 			// Register email in database and download
-			const result = await registerEmail(email, selectedVersion?.filename || 'MacRCDesktop_v2.0.dmg');
+			const result = await registerEmail(email, selectedVersion?.filename || 'MacRCDesktop_v2.1.dmg');
 
 			if (result.success) {
 				startDownload(email);

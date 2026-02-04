@@ -10,7 +10,7 @@
 	let showEmailModal = $state(false);
 	let showVersionSelector = $state(false);
 	let downloadLink = $state(null);
-	let selectedVersion = $state({ version: '2.0', filename: 'MacRCDesktop_v2.0.dmg', label: 'v2.0 (Latest)' });
+	let selectedVersion = $state({ version: '2.1', filename: 'MacRCDesktop_v2.1.dmg', label: 'v2.1 (Latest)' });
 	
 	const sizeClasses = {
 		large: 'px-8 py-4 text-lg',
@@ -109,7 +109,7 @@
 	<a 
 		bind:this={downloadLink}
 		href={url} 
-		download="MacRCDesktop_v2.0.dmg"
+		download="MacRCDesktop_v2.1.dmg"
 		target="_blank"
 		rel="noopener noreferrer"
 		style="display: none;"

@@ -51,12 +51,12 @@ import Layout from '../layouts/Layout.astro';
 						}
 
 						// Download URL
-						const downloadUrl = '/files/MacRCDesktop_v2.0.dmg';
+						const downloadUrl = '/files/MacRCDesktop_v2.1.dmg';
 						
 						// Automatically trigger download
 						const link = document.createElement('a');
 						link.href = downloadUrl;
-						link.download = 'MacRCDesktop_v2.0.dmg';
+						link.download = 'MacRCDesktop_v2.1.dmg';
 						link.target = '_blank';
 						link.rel = 'noopener noreferrer';
 						document.body.appendChild(link);
@@ -71,7 +71,7 @@ import Layout from '../layouts/Layout.astro';
 								</svg>
 								<h2>Email Verified Successfully!</h2>
 								<p>Your email has been verified and your download has started automatically.</p>
-								<p class="small-text">If the download didn't start, <a href="${downloadUrl}" download="MacRCDesktop_v2.0.dmg" class="download-link">click here to download</a></p>
+								<p class="small-text">If the download didn't start, <a href="${downloadUrl}" download="MacRCDesktop_v2.1.dmg" class="download-link">click here to download</a></p>
 								<a href="/" class="button">Go to Homepage</a>
 							</div>
 						`;

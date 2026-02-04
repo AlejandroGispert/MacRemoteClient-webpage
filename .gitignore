@@ -25,3 +25,6 @@ pnpm-debug.log*
 .vscode/
 .idea/
 
+# Large binary installers (host on GitHub Releases or use Git LFS)
+public/files/*.dmg
+

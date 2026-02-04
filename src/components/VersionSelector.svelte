@@ -3,12 +3,11 @@
 	
 	let showOldVersions = $state(false);
 	
-	const currentVersion = { version: '2.0', filename: 'MacRCDesktop_v2.0.dmg', label: 'v2.0 (Latest)', current: true };
+	const currentVersion = { version: '2.1', filename: 'MacRCDesktop_v2.1.dmg', label: 'v2.1 (Latest)', current: true };
 	const oldVersions = [
-		{ version: '1.5', filename: 'MacRCDesktop_v1.5.dmg', label: 'v1.5' },
-		{ version: '1.4', filename: 'MacRCDesktop_v1.4.dmg', label: 'v1.4' },
-		{ version: '1.3', filename: 'MacRCDesktop_v1.3.dmg', label: 'v1.3' },
-		{ version: '1.0', filename: 'MacRemoteController-v1.dmg', label: 'v1.0' },
+	{ version: '2.0', filename: 'MacRCDesktop_v2.0.dmg', label: 'v2.0' },		 	
+	{ version: '1.5', filename: 'MacRCDesktop_v1.5.dmg', label: 'v1.5' },
+	
 	];
 
 	function handleVersionClick(version) {
