@@ -4,7 +4,7 @@
 	let showOldVersions = $state(false);
 	
 	const GITHUB_BASE = 'https://github.com/AlejandroGispert/MacRemoteClient-webpage/releases/download';
-	const currentVersion = { version: '2.1', filename: 'MacRCDesktop_v2.1.dmg', label: 'v2.1 (Latest)', current: true, downloadUrl: `${GITHUB_BASE}/v2.1/MacRCDesktop.v2.1.Install.dmg` };
+	const currentVersion = { version: '2.2', filename: 'MacRCDesktop_v2.2.dmg', label: 'v2.2 (Latest)', current: true, downloadUrl: `${GITHUB_BASE}/2.2/MacRCDesktop.v2.2.Install.dmg` };
 	const oldVersions = [
 		{ version: '2.0', filename: 'MacRCDesktop_v2.0.dmg', label: 'v2.0', downloadUrl: `${GITHUB_BASE}/v2.0/MacRCDesktop_v2.0.dmg` },
 		{ version: '1.5', filename: 'MacRCDesktop_v1.5.dmg', label: 'v1.5', downloadUrl: `${GITHUB_BASE}/v1.5/MacRCDesktop_v1.5.dmg` },

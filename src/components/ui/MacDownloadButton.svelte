@@ -10,8 +10,8 @@
 	let showEmailModal = $state(false);
 	let showVersionSelector = $state(false);
 	let downloadLink = $state(null);
-	const DEFAULT_V2_1 = { version: '2.1', filename: 'MacRCDesktop_v2.1.dmg', label: 'v2.1 (Latest)', downloadUrl: 'https://github.com/AlejandroGispert/MacRemoteClient-webpage/releases/download/v2.1/MacRCDesktop.v2.1.Install.dmg' };
-	let selectedVersion = $state(DEFAULT_V2_1);
+	const DEFAULT_V2_2 = { version: '2.2', filename: 'MacRCDesktop_v2.2.dmg', label: 'v2.2 (Latest)', downloadUrl: 'https://github.com/AlejandroGispert/MacRemoteClient-webpage/releases/download/2.2/MacRCDesktop.v2.2.Install.dmg' };
+	let selectedVersion = $state(DEFAULT_V2_2);
 	
 	const sizeClasses = {
 		large: 'px-8 py-4 text-lg',
@@ -100,7 +100,7 @@
 	<a 
 		bind:this={downloadLink}
 		href={url} 
-		download="MacRCDesktop_v2.1.dmg"
+		download="MacRCDesktop_v2.2.dmg"
 		target="_blank"
 		rel="noopener noreferrer"
 		style="display: none;"
