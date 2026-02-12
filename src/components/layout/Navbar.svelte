@@ -84,11 +84,6 @@
 					<li role="none"><a href="/terms" class="dropdown-link" role="menuitem" tabindex={dropdownOpen ? 0 : -1}>Terms of Service</a></li>
 				</ul>
 			</li>
-			<li role="none">
-				<a href="/donate" class="donate-button" role="menuitem">
-					Donate
-				</a>
-			</li>
 		</ul>
 		
 		<!-- Mobile Menu Button -->
