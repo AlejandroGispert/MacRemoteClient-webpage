@@ -46,6 +46,66 @@
         "iconHash": "bd236b47f4a2c62251c21cc270e21cb81cf735b7b27e4d917f0f47a237b960a7",
         "scriptHash": "687cbd6da6bacca92633e257133c740446fd2b07741889c99407e53018c93fb7"
       }
+    ],
+    "com.colliderli.iina": [
+      {
+        "id": "iina-play-pause",
+        "name": "IINA Play / Pause",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/iina.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/iina-play-pause.scpt",
+        "iconHash": "6f2744f8ab0eafdbf16f8d5c0e072070bd885a72b95fffee8ac793fb040b03dd9840b8177912d74c7ad6070aa236ba92f14bb7c715afb587ab7ba198fc5b1592",
+        "scriptHash": "885ababdbcc3c92a26bb3d67fd5a617cad9d0719dededa2ca00bf48f37609598b9e4c34ed8d4dc781b48b23924ccd26f2b7c495740c7aaaf3bb902bf7b446c2e"
+      },
+      {
+        "id": "iina-seek-forward",
+        "name": "IINA Seek Forward",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/iina.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/iina-seek-forward.scpt",
+        "iconHash": "6f2744f8ab0eafdbf16f8d5c0e072070bd885a72b95fffee8ac793fb040b03dd9840b8177912d74c7ad6070aa236ba92f14bb7c715afb587ab7ba198fc5b1592",
+        "scriptHash": "def4e684e08cdbf99f45805890f895b30d5b44cdeced5006ad0dc313007fa70b5617036e03c9578683ea6ca57cc5598c555f09e646c6867e887a70509e1d4466"
+      },
+      {
+        "id": "iina-seek-back",
+        "name": "IINA Seek Back",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/iina.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/iina-seek-back.scpt",
+        "iconHash": "6f2744f8ab0eafdbf16f8d5c0e072070bd885a72b95fffee8ac793fb040b03dd9840b8177912d74c7ad6070aa236ba92f14bb7c715afb587ab7ba198fc5b1592",
+        "scriptHash": "b005f8b934f57d747f96f0947ecd0950a446711fb47121095d187cfa288fce273c33697d3b193e61edb0165b4ab2c0a991c15de1934eb2a5438a73b062caa322"
+      },
+      {
+        "id": "iina-volume-up",
+        "name": "IINA Volume Up",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/iina.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/iina-volume-up.scpt",
+        "iconHash": "6f2744f8ab0eafdbf16f8d5c0e072070bd885a72b95fffee8ac793fb040b03dd9840b8177912d74c7ad6070aa236ba92f14bb7c715afb587ab7ba198fc5b1592",
+        "scriptHash": "2005385a55eb537e8687995959b0afda06aa9b80596da1d998db7cf9351e16966f13a47b338ef1724cd16cc59ab5557ce94acdbc2231114325206d557f82823a"
+      },
+      {
+        "id": "iina-volume-down",
+        "name": " IINA Volume Down",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/iina.png",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/iina-volume-down.scpt",
+        "iconHash": "6f2744f8ab0eafdbf16f8d5c0e072070bd885a72b95fffee8ac793fb040b03dd9840b8177912d74c7ad6070aa236ba92f14bb7c715afb587ab7ba198fc5b1592",
+        "scriptHash": "a21ac42909a2e2876291e9d65f7f2526bee1c7e348de8200654a89ad76a22037aa27af0e037227c21c5d493ee58d086325956d7dbcae39014c24c74bd9f1af24"
+      }
+    ],
+    "com.google.Chrome": [
+      {
+        "id": "chrome-tile-left",
+        "name": "Tile Chrome Left",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/chrome.svg",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/chrome-tile-left.scpt",
+        "iconHash": "3564c4ddba4489a5262ddb8580c95a425470afdfc3166c44f76df92c85d94c57082f0ade34d4c6c3a1f73a1c357fb9e4c9e76d4564d8da46b6973f26cbd378e6",
+        "scriptHash": "660a567f5cc6f27ee0a7efdf5dc244883115fe0abb5d017b7e6bd492aea7bba6802c17ec61393293cb19d4d739d84e9e25de17d3110950bb719fa14c038d7837"
+      },
+      {
+        "id": "chrome-tile-right",
+        "name": "Tile Chrome Right",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/chrome.svg",
+        "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/chrome-tile-right.scpt",
+        "iconHash": "3564c4ddba4489a5262ddb8580c95a425470afdfc3166c44f76df92c85d94c57082f0ade34d4c6c3a1f73a1c357fb9e4c9e76d4564d8da46b6973f26cbd378e6",
+        "scriptHash": "d26fe3e635930fc3eb628b68bfd036e3ffd1baf5a561c9a596ef28fa7cbb0941f38b1fb94de184049be865fa00051055b6e3dfcfeedb31cb9e91bd0983db0b4e"
+      }
     ]
   }
 }
