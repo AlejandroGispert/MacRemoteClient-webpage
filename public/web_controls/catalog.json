@@ -93,17 +93,17 @@
       {
         "id": "chrome-tile-left",
         "name": "Tile Chrome Left",
-        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/chrome.svg",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/chrome.png",
         "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/chrome-tile-left.scpt",
-        "iconHash": "3564c4ddba4489a5262ddb8580c95a425470afdfc3166c44f76df92c85d94c57082f0ade34d4c6c3a1f73a1c357fb9e4c9e76d4564d8da46b6973f26cbd378e6",
+        "iconHash": "bdb6500f567ece1fc2b9554955d1efb5dd7eace79c7ce82d6da3cd2d901af22831cec7b5228df4cc85c52a84a9dcea0d8a4080621eb07f739b89e1bbd2212216",
         "scriptHash": "660a567f5cc6f27ee0a7efdf5dc244883115fe0abb5d017b7e6bd492aea7bba6802c17ec61393293cb19d4d739d84e9e25de17d3110950bb719fa14c038d7837"
       },
       {
         "id": "chrome-tile-right",
         "name": "Tile Chrome Right",
-        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/chrome.svg",
+        "iconUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/icons/chrome.png",
         "scriptUrl": "https://macremotecontrollerwebpage.netlify.app/web_controls/scripts/chrome-tile-right.scpt",
-        "iconHash": "3564c4ddba4489a5262ddb8580c95a425470afdfc3166c44f76df92c85d94c57082f0ade34d4c6c3a1f73a1c357fb9e4c9e76d4564d8da46b6973f26cbd378e6",
+        "iconHash": "bdb6500f567ece1fc2b9554955d1efb5dd7eace79c7ce82d6da3cd2d901af22831cec7b5228df4cc85c52a84a9dcea0d8a4080621eb07f739b89e1bbd2212216",
         "scriptHash": "d26fe3e635930fc3eb628b68bfd036e3ffd1baf5a561c9a596ef28fa7cbb0941f38b1fb94de184049be865fa00051055b6e3dfcfeedb31cb9e91bd0983db0b4e"
       }
     ]
